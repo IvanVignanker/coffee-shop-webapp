@@ -22,6 +22,6 @@ public class ContactInfoDTORequest {
     private String lastName;
 
     @NotBlank @Length(min = 6, max = 20)
-    @Pattern(regexp = "^[+][0-9]", message = "Phone number may contain only numeric characters , leading by '+' ")
+//    @Pattern(regexp = "^[+][0-9]", message = "Phone number may contain only numeric characters , leading by '+' ")
     private String phoneNumber;
 }
