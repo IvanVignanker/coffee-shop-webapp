@@ -18,11 +18,11 @@ public class DeliveryDTORequest {
     private String officialName;
 
     @NotBlank @Length(min = 2, max = 20)
-    @Pattern(regexp = "^[a-zA-Z]", message = "City may contain only alphabet characters")
+//    @Pattern(regexp = "^[a-zA-Z]", message = "City may contain only alphabet characters")
     private String city;
 
     @NotBlank @Length(min = 2, max = 20)
-    @Pattern(regexp = "^[a-zA-Z]", message = "Street may contain only alphabet characters")
+//    @Pattern(regexp = "^[a-zA-Z]", message = "Street may contain only alphabet characters")
     private String street;
 
     @Max(value = 10)

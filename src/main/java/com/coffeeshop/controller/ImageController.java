@@ -19,8 +19,3 @@ public class ImageController {
         return IOUtils.toByteArray(in);
     }
 }
-
-
-
-
-

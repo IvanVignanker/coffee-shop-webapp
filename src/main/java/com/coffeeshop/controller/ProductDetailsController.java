@@ -15,7 +15,8 @@ public class ProductDetailsController {
     @GetMapping("/customer/products/{id}")
     public ProductDetailsDTOResponse getProductDetails(@PathVariable("id") Long id) {
         return ProductDetailsDTOResponse.builder().productId(98765L).productName("Arabica Plantation AAA")
-                .quantityAvailableKg(300).image("http://customer-ui/products/1/image/1").image("http://customer-ui/products/1/image/2")
+                .quantityAvailableKg(300).image("http://customer-ui/products/1/image/1")
+                .image("http://customer-ui/products/1/image/2")
                 .characteristicsDTO(
                         ProductCharacteristicsDTOResponse.builder().strong(2).sour(2).bitter(3).build())
                 .description("Product description").inStockDTO(
