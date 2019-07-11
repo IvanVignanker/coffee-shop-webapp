@@ -22,6 +22,7 @@ let routes = {
     productDetails: require('./api/productDetails/productDetails'),
     productImage: require('./api/productsImage/productImage'),
     productList: require('./api/productList/productList'),
+    checkout: require('./api/checkout/checkout'),
   }
 };
 
@@ -38,6 +39,9 @@ app.get('/api/customer/products/:id', routes.api.productDetails.getProductDetail
 
 //Product list
 app.get('/api/products', routes.api.productList.getProductList);
+
+//Checkout (should be POST !!! request for taking json file from Spring)
+app.get('/api/customer/checkout', routes.api.checkout.getCheckout);
 
 //Product image
 app.get('/api/customer/products/:productId/images/:imageId', routes.api.productImage.getImagesById);
