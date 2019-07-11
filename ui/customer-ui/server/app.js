@@ -21,6 +21,7 @@ let routes = {
   api: {
     example: require('./api/examples/example'),
     productDetails: require('./api/productDetails/productDetails'),
+    productImage: require('./api/productsImage/productImage')
   }
 };
 
@@ -35,6 +36,8 @@ app.post('/api/examples', routes.api.example.saveExample);
 //Product details
 app.get('/api/customer/products/:id', routes.api.productDetails.getProductDetails);
 
+//Product image
+app.get('/api/customer/products/:productId/images/:imageId', routes.api.productImage.getImagesById);
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
