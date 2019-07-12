@@ -12,7 +12,6 @@ app.set('view engine', 'html');
 app.set('views', DIST_FOLDER);
 app.use(express.static(DIST_FOLDER));
 
-
 app.get('*.*', express.static(DIST_FOLDER, {
   maxAge: '1y'
 }));
@@ -21,7 +20,8 @@ let routes = {
   api: {
     example: require('./api/examples/example'),
     productDetails: require('./api/productDetails/productDetails'),
-    productImage: require('./api/productsImage/productImage')
+    productImage: require('./api/productsImage/productImage'),
+    productList: require('./api/productList/productList'),
   }
 };
 
@@ -35,6 +35,9 @@ app.post('/api/examples', routes.api.example.saveExample);
 
 //Product details
 app.get('/api/customer/products/:id', routes.api.productDetails.getProductDetails);
+
+//Product list
+app.get('/api/products', routes.api.productList.getProductList);
 
 //Product image
 app.get('/api/customer/products/:productId/images/:imageId', routes.api.productImage.getImagesById);
