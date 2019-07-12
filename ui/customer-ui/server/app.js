@@ -34,14 +34,17 @@ app.get('/api/examples', routes.api.example.getExampleList);
 app.get('/api/examples/:id', routes.api.example.getExampleById);
 app.post('/api/examples', routes.api.example.saveExample);
 
+//Checkout (should be POST !!! request for taking json file from Spring)
+app.get('/api/customer/checkout', routes.api.checkout.getCheckout);
+
 //Product details
 app.get('/api/customer/products/:id', routes.api.productDetails.getProductDetails);
 
-//Product list
+//Product list (should be POST !!! request for taking json file from Spring)
 app.get('/api/products', routes.api.productList.getProductList);
 
 //Checkout (should be POST !!! request for taking json file from Spring)
-app.get('/api/customer/checkout', routes.api.checkout.getCheckout);
+app.post('/api/customer/checkout', routes.api.checkout.getCheckout);
 
 //Product image
 app.get('/api/customer/products/:productId/images/:imageId', routes.api.productImage.getImagesById);
@@ -55,5 +58,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Node Express server listening on http://localhost:${PORT}`);
 });
-
-

@@ -18,11 +18,11 @@ public class ProductDetailsDTOResponse {
     @Singular
     private List<String> images;
 
-    ProductCharacteristicsDTOResponse characteristicsDTO;
+    ProductCharacteristicsDTOResponse characteristics;
 
     private String description;
 
-    InStockDTOResponse inStockDTO;
+    InStockDTOResponse inStock;
 
     private Double unitPrice;
 }

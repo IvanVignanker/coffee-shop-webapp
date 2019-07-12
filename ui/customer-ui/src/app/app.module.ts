@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExampleComponent } from './example/example.component';
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import { FormsModule} from "@angular/forms";
+import { HttpClientModule} from "@angular/common/http";
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExampleComponent
+    ExampleComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
