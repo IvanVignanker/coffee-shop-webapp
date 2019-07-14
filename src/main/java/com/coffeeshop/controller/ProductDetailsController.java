@@ -17,9 +17,9 @@ public class ProductDetailsController {
         return ProductDetailsDTOResponse.builder().productId(98765L).productName("Arabica Plantation AAA")
                 .quantityAvailableKg(300).image("http://customer-ui/products/1/image/1")
                 .image("http://customer-ui/products/1/image/2")
-                .characteristicsDTO(
+                .characteristics(
                         ProductCharacteristicsDTOResponse.builder().strong(2).sour(2).bitter(3).build())
-                .description("Product description").inStockDTO(
+                .description("Product description").inStock(
                         InStockDTOResponse.builder().isAvailable(true).quantityAvailable(20).build())
                 .unitPrice(100.00).build();
     }
