@@ -32,6 +32,15 @@
             <version>2.9.2</version>
         </dependency>
         <!--        swagger-->
+
+        <!--        mysql-->
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>5.1.44</version>-->
+<!--        </dependency>-->
+        <!--        mysql-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
