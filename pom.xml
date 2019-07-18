@@ -33,6 +33,13 @@
         </dependency>
         <!--        swagger-->
 
+        <!--        liquibase-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <!--        liquibase-->
+
         <!--        mysql-->
 <!--        <dependency>-->
 <!--            <groupId>mysql</groupId>-->
