@@ -1,7 +1,7 @@
 package com.coffeeshop.controller.testController;
 
-import com.coffeeshop.model.entity.order.Order;
-import com.coffeeshop.repository.OrderRepository;
+import com.coffeeshop.model.entity.order.order.OrderEntity;
+import com.coffeeshop.repository.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +15,18 @@ public class OrderExampleForTestController {
     OrderRepository orderRepository;
 
     @GetMapping("/orders/example")
-    public List<Order> getAll(){
+    public List<OrderEntity> getAll(){
         return orderRepository.findAll();
     }
 
     @GetMapping("/orders/example/{id}")
-    public Order getById(@PathVariable("id")Long id){
+    public OrderEntity getById(@PathVariable("id")Long id){
         return orderRepository
                 .findById(id).orElseThrow(null);
     }
 
     @PostMapping("/orders/example")
-    public Order saveOrder(@RequestBody Order order) {
+    public OrderEntity saveOrder(@RequestBody OrderEntity order) {
         return orderRepository.save(order);
     }
 }

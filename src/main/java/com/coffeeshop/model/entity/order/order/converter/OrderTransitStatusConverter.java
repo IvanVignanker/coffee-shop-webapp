@@ -1,6 +1,6 @@
-package com.coffeeshop.model.entity.order.converter;
+package com.coffeeshop.model.entity.order.order.converter;
 
-import com.coffeeshop.model.entity.order.status.OrderTransitStatus;
+import com.coffeeshop.model.entity.order.order.status.OrderTransitStatus;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

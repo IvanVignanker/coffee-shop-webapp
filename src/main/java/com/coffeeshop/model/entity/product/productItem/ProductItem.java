@@ -28,6 +28,7 @@ public class ProductItem extends BaseDate {
     @Convert(converter = ProductStatusConverter.class)
     private ProductStatus status;
 
-    @Column(name = "VERSION") @Version
+    @Column(name = "VERSION")
+    @Version
     private Integer version;
 }

@@ -1,4 +1,4 @@
-package com.coffeeshop.model.entity.order.status;
+package com.coffeeshop.model.entity.order.order.status;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import java.util.Arrays;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public enum OrderTransitStatus {
+public enum OrderPaymentStatus {
 
-    NEW_ORDER(1),
-    SHIPPED(2),
-    DELIVERED(3),
-    RETURNED(4);
+    NO_INFO(1),
+    PAY_ON_DELIVERY(2),
+    PAID_ON_DELIVERY(3),
+    PAID_BY_CC(4);
 
     private Integer id;
 
@@ -22,13 +22,13 @@ public enum OrderTransitStatus {
         return id;
     }
 
-    public static OrderTransitStatus getById(Integer id) {
+    public static OrderPaymentStatus getById(Integer id) {
         if (id == null) {
-            return OrderTransitStatus.NEW_ORDER;
+            return OrderPaymentStatus.NO_INFO;
         }
         return Arrays.stream(values())
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
-                .orElseThrow(null);
+                .get();
     }
 }

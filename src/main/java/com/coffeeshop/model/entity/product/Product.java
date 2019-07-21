@@ -35,6 +35,7 @@ public class Product extends BaseDate {
     @Column(name = "AVAILABLE")
     private Boolean available;
 
-    @Column(name = "VERSION") @Version
+    @Column(name = "VERSION")
+    @Version
     private Integer version;
 }
