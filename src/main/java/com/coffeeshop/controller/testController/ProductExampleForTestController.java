@@ -1,7 +1,7 @@
-package com.coffeeshop.controller;
+package com.coffeeshop.controller.testController;
 
 import com.coffeeshop.model.entity.product.Product;
-import com.coffeeshop.repository.ProductRepository;
+import com.coffeeshop.repository.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +26,7 @@ public class ProductExampleForTestController {
     }
 
     @PostMapping("/products/example")
-    public Product saveOrder(@RequestBody Product product) {
+    public Product saveProduct(@RequestBody Product product) {
         return productRepository.save(product);
     }
 }
