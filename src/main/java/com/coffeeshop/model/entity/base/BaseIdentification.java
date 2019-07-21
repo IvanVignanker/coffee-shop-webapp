@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 @Setter @Getter
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseIdentification {
 
     @Id
