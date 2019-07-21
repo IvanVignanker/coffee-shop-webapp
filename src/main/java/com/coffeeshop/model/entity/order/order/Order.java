@@ -1,12 +1,12 @@
-package com.coffeeshop.model.entity.order;
+package com.coffeeshop.model.entity.order.order;
 
 import com.coffeeshop.model.entity.base.BaseDate;
-import com.coffeeshop.model.entity.order.converter.OrderPaymentStatusConverter;
-import com.coffeeshop.model.entity.order.converter.OrderStatusConverter;
-import com.coffeeshop.model.entity.order.converter.OrderTransitStatusConverter;
-import com.coffeeshop.model.entity.order.status.OrderPaymentStatus;
-import com.coffeeshop.model.entity.order.status.OrderStatus;
-import com.coffeeshop.model.entity.order.status.OrderTransitStatus;
+import com.coffeeshop.model.entity.order.order.converter.OrderPaymentStatusConverter;
+import com.coffeeshop.model.entity.order.order.converter.OrderStatusConverter;
+import com.coffeeshop.model.entity.order.order.converter.OrderTransitStatusConverter;
+import com.coffeeshop.model.entity.order.order.status.OrderPaymentStatus;
+import com.coffeeshop.model.entity.order.order.status.OrderStatus;
+import com.coffeeshop.model.entity.order.order.status.OrderTransitStatus;
 import lombok.*;
 
 import javax.persistence.Column;

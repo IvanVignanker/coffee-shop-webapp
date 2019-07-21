@@ -1,6 +1,6 @@
-package com.coffeeshop.repository;
+package com.coffeeshop.repository.order;
 
-import com.coffeeshop.model.entity.order.Order;
+import com.coffeeshop.model.entity.order.order.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

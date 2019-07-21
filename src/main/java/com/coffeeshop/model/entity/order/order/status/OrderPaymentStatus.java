@@ -1,4 +1,4 @@
-package com.coffeeshop.model.entity.order.status;
+package com.coffeeshop.model.entity.order.order.status;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
