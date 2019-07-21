@@ -184,4 +184,30 @@
 
         </createTable>
     </changeSet>
+
+    <changeSet id="5" author="Sergii">
+        <createTable tableName="ORDER_ITEMS">
+
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="ORDER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_order_items_orders" references="ORDERS(ID)"/>
+            </column>
+
+            <column name="PRODUCT_ITEM_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_order_items_product_item" references="PRODUCT_ITEM(ID)"/>
+            </column>
+
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="UPDATED_ON" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
