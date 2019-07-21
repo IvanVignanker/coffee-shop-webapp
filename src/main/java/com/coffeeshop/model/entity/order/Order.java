@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Setter
 @Builder
 @Entity @Table(name = "ORDERS")
-public class OrderEntity extends BaseDate {
+public class Order extends BaseDate {
 
     @Column(name = "ORDER_TRANSIT_STATUS")
     @Convert(converter = OrderTransitStatusConverter.class)

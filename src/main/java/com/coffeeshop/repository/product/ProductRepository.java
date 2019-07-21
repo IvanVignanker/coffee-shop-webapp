@@ -1,4 +1,4 @@
-package com.coffeeshop.repository;
+package com.coffeeshop.repository.product;
 
 import com.coffeeshop.model.entity.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
