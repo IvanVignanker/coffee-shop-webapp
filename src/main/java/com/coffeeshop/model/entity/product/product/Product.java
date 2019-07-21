@@ -1,4 +1,4 @@
-package com.coffeeshop.model.entity.product;
+package com.coffeeshop.model.entity.product.product;
 
 import com.coffeeshop.model.entity.base.BaseDate;
 import lombok.*;
