@@ -5,23 +5,20 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 
-    <changeSet id="1" author="sergii">
+    <changeSet id="1" author="Sergii">
         <createTable tableName="ORDERS">
 
             <column name="ID" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="ORDER_TRANSIT_STATUS" type="INT">
-                <constraints nullable="false"/>
+            <column name="ORDER_TRANSIT_STATUS" type="INT" defaultValue="1">
             </column>
 
-            <column name="ORDER_PAYMENT_STATUS" type="INT">
-                <constraints nullable="false"/>
+            <column name="ORDER_PAYMENT_STATUS" type="INT" defaultValue="1">
             </column>
 
-            <column name="ORDER_STATUS" type="INT">
-                <constraints nullable="false"/>
+            <column name="ORDER_STATUS" type="INT" defaultValue="1">
             </column>
 
             <column name="CREATED_ON" type="DATETIME">
@@ -35,7 +32,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2" author="sergii">
+    <changeSet id="2" author="Sergii">
         <createTable tableName="PRODUCTS">
 
             <column name="ID" type="BIGINT" autoIncrement="true">
@@ -81,7 +78,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="3" author="sergii">
+    <changeSet id="3" author="Sergii">
         <createTable tableName="PRODUCT_ITEM">
 
             <column name="ID" type="BIGINT" autoIncrement="true">
@@ -89,15 +86,14 @@
             </column>
 
             <column name="PRODUCT_ID" type="BIGINT">
-                <constraints nullable="false"/>
+                <constraints nullable="false" foreignKeyName="fk_product_item_products" references="PRODUCTS(ID)"/>
             </column>
 
             <column name="WEIGHT_KG" type="INT">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="STATUS" type="INT">
-                <constraints nullable="false"/>
+            <column name="STATUS" type="INT" defaultValue="1">
             </column>
 
             <column name="VERSION" type="INT">
@@ -115,7 +111,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="4" author="sergii">
+    <changeSet id="4" author="Sergii">
         <createTable tableName="ORDER_DETAILS">
 
             <column name="ID" type="BIGINT" autoIncrement="true">
@@ -123,7 +119,7 @@
             </column>
 
             <column name="ORDER_ID" type="BIGINT">
-                <constraints nullable="false"/>
+                <constraints nullable="false" foreignKeyName="fk_order_details_orders" references="ORDERS(ID)"/>
             </column>
 
             <column name="CUSTOMER_ENTITY_NAME" type="VARCHAR(50)">
@@ -151,7 +147,7 @@
             </column>
 
             <column name="IS_SELF_PICKUP" type="BIT">
-                <constraints nullable="true"/>
+                <constraints nullable="false"/>
             </column>
 
             <column name="CITY" type="VARCHAR(20)">

@@ -1,7 +1,7 @@
 package com.coffeeshop.model.entity.order.orderDetails;
 
 import com.coffeeshop.model.entity.base.BaseDate;
-import com.coffeeshop.model.entity.order.order.Order;
+import com.coffeeshop.model.entity.order.order.OrderEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +17,7 @@ public class OrderDetails extends BaseDate {
 
     @ManyToOne
     @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID", nullable = false)
-    private Order order;
+    private OrderEntity order;
 
     @Column(name = "CUSTOMER_ENTITY_NAME", nullable = false)
     private String customerEntityName;

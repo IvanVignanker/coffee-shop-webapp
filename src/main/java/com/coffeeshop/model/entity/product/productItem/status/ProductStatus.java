@@ -22,11 +22,11 @@ public enum ProductStatus {
 
     public static ProductStatus getById(Integer id) {
         if (id == null) {
-            return ProductStatus.SOLD;
+            return ProductStatus.AVAILABLE;
         }
         return Arrays.stream(values())
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
-                .orElseThrow(null);
+                .get();
     }
 }

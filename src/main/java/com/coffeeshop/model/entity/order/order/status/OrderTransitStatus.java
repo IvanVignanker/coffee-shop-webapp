@@ -29,6 +29,6 @@ public enum OrderTransitStatus {
         return Arrays.stream(values())
                 .filter(x -> x.getId().equals(id))
                 .findFirst()
-                .orElseThrow(null);
+                .get();
     }
 }

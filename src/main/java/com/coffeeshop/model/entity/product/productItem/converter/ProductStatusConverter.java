@@ -10,11 +10,11 @@ public class ProductStatusConverter implements AttributeConverter<ProductStatus,
 
     @Override
     public Integer convertToDatabaseColumn(ProductStatus productStatus) {
-        return productStatus == null ? ProductStatus.SOLD.getId() : productStatus.getId();
+        return productStatus == null ? ProductStatus.AVAILABLE.getId() : productStatus.getId();
     }
 
     @Override
     public ProductStatus convertToEntityAttribute(Integer integer) {
-        return integer == null ? ProductStatus.SOLD : ProductStatus.getById(integer);
+        return integer == null ? ProductStatus.AVAILABLE : ProductStatus.getById(integer);
     }
 }
