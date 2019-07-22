@@ -1,12 +1,11 @@
 package com.coffeeshop.model.entity.product.product;
 
 import com.coffeeshop.model.entity.base.BaseDate;
+import com.coffeeshop.model.entity.product.product.converter.ProductTypeConverter;
+import com.coffeeshop.model.entity.product.product.status.ProductType;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,10 +29,11 @@ public class Product extends BaseDate {
     private Double unitPrice;
 
     @Column(name = "PRODUCT_CATEGORY_ID", nullable = false)
-    private Integer productCategoryId;
+    @Convert(converter = ProductTypeConverter.class)
+    private ProductType productCategoryId;
 
     @Column(name = "AVAILABLE")
-    private Boolean available;
+    private Boolean available = false;
 
     @Column(name = "VERSION")
     @Version

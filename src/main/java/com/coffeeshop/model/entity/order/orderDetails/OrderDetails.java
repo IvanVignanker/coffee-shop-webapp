@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "ORDER_DETAILS")
 public class OrderDetails extends BaseDate {
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID", nullable = false)
     private OrderEntity order;
 
@@ -38,7 +38,7 @@ public class OrderDetails extends BaseDate {
     private String contactPhoneNumber;
 
     @Column(name = "IS_SELF_PICKUP")
-    private Boolean isSelfPickup;
+    private Boolean isSelfPickup = false;
 
     @Column(name = "CITY")
     private String city;

@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "PRODUCT_QUANTITY")
 public class ProductQuantity extends BaseDate {
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID", nullable = false)
     private Product product;
 
@@ -24,5 +24,5 @@ public class ProductQuantity extends BaseDate {
     private Integer version;
 
     @Column(name = "QUANTITY", nullable = false)
-    private Integer quantity;
+    private Integer quantity = 0;
 }
