@@ -1,4 +1,4 @@
-package com.coffeeshop.controller.testController;
+package com.coffeeshop.controller.testController.productTest;
 
 import com.coffeeshop.model.entity.product.productItem.ProductItem;
 import com.coffeeshop.repository.product.ProductItemRepository;

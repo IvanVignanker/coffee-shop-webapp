@@ -1,7 +1,7 @@
 package com.coffeeshop.model.entity.product.productItem;
 
 import com.coffeeshop.model.entity.base.BaseDate;
-import com.coffeeshop.model.entity.product.Product;
+import com.coffeeshop.model.entity.product.product.Product;
 import com.coffeeshop.model.entity.product.productItem.converter.ProductStatusConverter;
 import com.coffeeshop.model.entity.product.productItem.status.ProductStatus;
 import lombok.*;

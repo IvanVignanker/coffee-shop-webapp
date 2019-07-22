@@ -1,4 +1,4 @@
-package com.coffeeshop.controller.testController;
+package com.coffeeshop.controller.testController.orderTest;
 
 import com.coffeeshop.model.entity.order.orderItem.OrderItem;
 import com.coffeeshop.repository.order.OrderItemRepository;
