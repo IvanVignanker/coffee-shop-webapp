@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductRoutingHttpService} from "./http/product-routing-http.service";
-import { ProductDetails } from "../model/productDetails/productDetails";
-import {Subscription} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import { ProductRoutingHttpService } from "./http/product-routing-http.service";
+import { ProductDetails } from "./model/productDetails";
+import { Subscription } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +20,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails(productId: number) {
-    return this.productRoutingHttpService.getProductDetailsById(productId).subscribe(data => this.productDetails = data);
+    return this.productRoutingHttpService
+      .getProductDetailsById(productId).subscribe(data => this.productDetails = data);
   }
 
   ngOnInit() {
