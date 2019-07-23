@@ -50,9 +50,20 @@
     </tr>
     </thead>
     <tbody>
-    <tr >
-      <td *ngFor="let product of productListResponse.products">{{this.productListResponse.products}}</td>
+    <tr *ngFor="let product of productListResponse.products">
+      <td>{{this.product.productId}}</td>
+      <td>{{this.product.title}}</td>
+      <td>{{this.product.shortDescription}}</td>
+      <td>{{this.product.type}}</td>
+      <td>{{this.product.previewImage}}</td>
+      <td>{{this.product.price}}</td>
+      <td>{{this.product.inStockCount}}</td>
+      <td>{{this.product.productParameters.flavour}}</td>
+      <td>{{this.product.productParameters.rate}}</td>
+      <td>{{this.product.productParameters.decaf}}</td>
+      <td>{{this.product.productParameters.coffeeType}}</td>
     </tr>
     </tbody>
   </table>
 </div>
+<app-footer></app-footer>
