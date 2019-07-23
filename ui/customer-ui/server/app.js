@@ -37,10 +37,10 @@ app.post('/api/examples', routes.api.example.saveExample);
 //Product details
 app.get('/api/customer/products/:id', routes.api.productDetails.getProductDetails);
 
-//Product list (should be POST !!! request for taking json file from Spring)
+//Product list
 app.post('/api/products', routes.api.productList.getProductList);
 
-//Checkout (should be POST !!! request for taking json file from Spring)
+//Checkout
 app.post('/api/customer/checkout', routes.api.checkout.getCheckout);
 
 //Product image

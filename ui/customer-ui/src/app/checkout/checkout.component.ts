@@ -24,7 +24,7 @@ export class CheckoutComponent implements OnInit {
     return this.checkoutRoutingHttpService.getCheckout(checkoutRequest).subscribe(data => {
       this.checkoutResponse = data;
       // this.json = JSON.stringify(this.checkoutResponse);
-      // this.router.navigate(['/received/' + this.checkoutResponse.orderId]);
+      this.router.navigate(['/received/' + this.checkoutResponse.orderId]);
     });
   }
 
