@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExampleHttpService} from "../service/http/example-http.service";
-import { Example} from "../model/example";
+import { ExampleHttpService} from "./service/http/example-http.service";
+import { Example} from "./model/example";
 
 @Component({
   selector: 'app-example',
@@ -31,5 +31,4 @@ export class ExampleComponent implements OnInit {
   ngOnInit() {
     this.getExamples();
   }
-
 }
