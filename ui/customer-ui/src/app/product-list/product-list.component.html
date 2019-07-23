@@ -1,0 +1,58 @@
+<div class="card-body">
+  <h4>Popular</h4>
+  <table class="table table-hover table-bordered">
+    <thead class="alert-info">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Images</th>
+      <th>Price</th>
+      <th>in Stock</th>
+      <th>Flavour</th>
+      <th>Rate</th>
+      <th>is Decaf</th>
+      <th>Coffee type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+      <td>{{this.productListResponse.popular.productId}}</td>
+      <td>{{this.productListResponse.popular.title}}</td>
+      <td>{{this.productListResponse.popular.shortDescription}}</td>
+      <td>{{this.productListResponse.popular.type}}</td>
+      <td>{{this.productListResponse.popular.previewImage}}</td>
+      <td>{{this.productListResponse.popular.price}}</td>
+      <td>{{this.productListResponse.popular.inStockCount}}</td>
+      <td>{{this.productListResponse.popular.productParameters.flavour}}</td>
+      <td>{{this.productListResponse.popular.productParameters.rate}}</td>
+      <td>{{this.productListResponse.popular.productParameters.decaf}}</td>
+      <td>{{this.productListResponse.popular.productParameters.coffeeType}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <h4>Products</h4>
+  <table class="table table-hover table-bordered">
+    <thead class="alert-info">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Images</th>
+      <th>Price</th>
+      <th>in Stock</th>
+      <th>Flavour</th>
+      <th>Rate</th>
+      <th>is Decaf</th>
+      <th>Coffee type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+      <td *ngFor="let product of productListResponse.products">{{this.productListResponse.products}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
