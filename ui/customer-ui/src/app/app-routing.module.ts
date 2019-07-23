@@ -8,7 +8,8 @@ const routes: Routes = [
   {path: '', component: ProductListComponent},
   {path: 'productList', component: ProductListComponent},
   {path: 'productDetails/:id', component: ProductDetailsComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {path: 'checkout', component: CheckoutComponent},
+  {path: 'received/:orderId', component: CheckoutComponent}
 ];
 
 @NgModule({
