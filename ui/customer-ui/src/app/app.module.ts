@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { OrderReceivedComponent } from './order-received/order-received.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OrderReceivedComponent } from './order-received/order-received.componen
     ProductDetailsComponent,
     CheckoutComponent,
     ProductListComponent,
-    OrderReceivedComponent
+    OrderReceivedComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
