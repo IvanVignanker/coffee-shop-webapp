@@ -12,6 +12,10 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { OrderReceivedComponent } from './order-received/order-received.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { SliderComponent } from './slider/slider.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductListMainPageComponent } from './product-list-main-page/product-list-main-page.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +26,16 @@ import { HeaderComponent } from './header/header.component';
     ProductListComponent,
     OrderReceivedComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    SliderComponent,
+    ProductListMainPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

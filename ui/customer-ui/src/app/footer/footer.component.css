@@ -13,7 +13,7 @@
 /*column #1*/
 
 .footer-bs .footer-brand h2 {
-  margin:0px 0px 10px;
+  margin-left: 100px;
   font-weight: bold;
 }
 
@@ -22,6 +22,7 @@
   text-transform: capitalize;
   color:rgba(255,255,255,0.70);
   letter-spacing: 2px;
+  margin-left: 100px;
 }
 
 /*column #2*/
@@ -143,4 +144,8 @@
   letter-spacing: 3px;
   color: #CACACC;
   text-align: center;
+}
+
+.footer-bs .container p {
+  margin-top: 25px;
 }
