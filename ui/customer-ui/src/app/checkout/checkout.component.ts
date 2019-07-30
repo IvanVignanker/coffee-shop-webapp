@@ -14,8 +14,8 @@ import { CheckoutResponse } from "./model/checkoutResponse";
 export class CheckoutComponent implements OnInit {
 
   // private json: string;
-  private checkoutResponse: CheckoutResponse;
-  private defaultRequest: CheckoutRequest = CheckoutRequest.prototype.getDefaultRequest();
+  public checkoutResponse: CheckoutResponse;
+  public defaultRequest: CheckoutRequest = CheckoutRequest.prototype.getDefaultRequest();
 
   constructor(private checkoutRoutingHttpService: CheckoutRoutingHttpService,
               private router: Router) {}
