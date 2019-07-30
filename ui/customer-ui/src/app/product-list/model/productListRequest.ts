@@ -5,9 +5,11 @@ export class ProductListRequest {
   private _page: number;
   private _results: number;
   private _search: string;
+
   private _priceMin: number;
   private _priceMax: number;
   private _sortBy: string;
+
   private _characteristics: Characteristics;
 
   constructor(page: number, results: number, search: string,

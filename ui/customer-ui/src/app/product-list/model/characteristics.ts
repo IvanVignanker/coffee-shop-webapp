@@ -6,6 +6,7 @@ export class Characteristics {
   private _sourTo: number;
   private _strongFrom: number;
   private _strongTo: number;
+
   private _decaf: boolean;
   private _ground: boolean;
   private _coffeeType: string;
