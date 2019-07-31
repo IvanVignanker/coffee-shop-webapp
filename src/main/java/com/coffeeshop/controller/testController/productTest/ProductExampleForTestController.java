@@ -1,6 +1,6 @@
 package com.coffeeshop.controller.testController.productTest;
 
-import com.coffeeshop.model.entity.product.product.Product;
+import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.repository.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

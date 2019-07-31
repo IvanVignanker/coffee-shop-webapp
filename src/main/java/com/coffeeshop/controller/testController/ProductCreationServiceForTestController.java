@@ -1,35 +1,40 @@
 package com.coffeeshop.controller.testController;
 
-import com.coffeeshop.model.web.productCreationResponse.request.ProductRequest;
-import com.coffeeshop.model.web.productCreationResponse.response.ProductCreationResponse;
+import com.coffeeshop.exception.InputValidationException;
+import com.coffeeshop.model.admin.web.productCreationResponse.request.ProductRequest;
+import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductCreationResponse;
+import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductMainCreationResponse;
 import com.coffeeshop.service.ProductCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.io.IOException;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/admin/product")
 public class ProductCreationServiceForTestController {
 
     @Autowired
     ProductCreationService productCreationService;
 
-    @PostMapping("/createProduct")
+    @PostMapping("/add")
     public ProductCreationResponse createProduct(
-            @RequestBody ProductRequest productRequest) {
+            @RequestBody @Valid ProductRequest productRequest, BindingResult result) throws IOException {
+        if (result.hasErrors()) {
+            throw new InputValidationException(result);
+        }
         return productCreationService.createProduct(productRequest);
     }
 
-    //don't check. it's raw
-    @PostMapping("/available/{id}")
-    public void makeAvailable(
-            @RequestParam(name = "id") Long id) {
-        productCreationService.makeAvailable(id);
+    @PostMapping("/makeAvailable/{id}")
+    public ProductMainCreationResponse makeAvailable(@PathVariable("id") Long id) {
+        return productCreationService.makeAvailable(id);
     }
 
-    //also raw
-    @PostMapping("/unAvailable/{id}")
-    public void makeUnavailable(
-            @RequestParam(name = "id") Long id) {
-        productCreationService.makeUnavailable(id);
+    @PostMapping("/makeUnavailable/{id}")
+    public ProductMainCreationResponse makeUnavailable(@PathVariable("id") Long id) {
+        return productCreationService.makeUnavailable(id);
     }
 }
