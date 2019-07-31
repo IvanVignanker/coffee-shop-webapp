@@ -1,7 +1,7 @@
 package com.coffeeshop.controller;
 
-import com.coffeeshop.model.web.checkout.CheckoutSubmitDTORequest;
-import com.coffeeshop.model.web.checkout.CheckoutSubmitDTOResponse;
+import com.coffeeshop.model.customer.web.checkout.CheckoutSubmitDTORequest;
+import com.coffeeshop.model.customer.web.checkout.CheckoutSubmitDTOResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

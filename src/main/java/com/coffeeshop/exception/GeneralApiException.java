@@ -1,6 +1,6 @@
 package com.coffeeshop.exception;
 
-import com.coffeeshop.model.web.error.ErrorResponse;
+import com.coffeeshop.model.customer.web.error.ErrorResponse;
 import org.springframework.http.HttpStatus;
 
 public class GeneralApiException extends BaseException {

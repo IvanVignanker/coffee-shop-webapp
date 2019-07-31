@@ -1,6 +1,6 @@
 package com.coffeeshop.controller.testController.orderTest;
 
-import com.coffeeshop.model.entity.order.order.OrderEntity;
+import com.coffeeshop.model.customer.entity.order.order.OrderEntity;
 import com.coffeeshop.repository.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

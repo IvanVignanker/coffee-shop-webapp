@@ -1,8 +1,8 @@
 package com.coffeeshop.controller;
 
-import com.coffeeshop.model.web.productDetails.InStockDTOResponse;
-import com.coffeeshop.model.web.productDetails.ProductCharacteristicsDTOResponse;
-import com.coffeeshop.model.web.productDetails.ProductDetailsDTOResponse;
+import com.coffeeshop.model.customer.web.productDetails.InStockDTOResponse;
+import com.coffeeshop.model.customer.web.productDetails.ProductCharacteristicsDTOResponse;
+import com.coffeeshop.model.customer.web.productDetails.ProductDetailsDTOResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
