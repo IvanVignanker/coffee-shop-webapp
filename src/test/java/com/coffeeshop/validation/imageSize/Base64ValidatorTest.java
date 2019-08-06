@@ -1,4 +1,4 @@
-package com.coffeeshop.validation;
+package com.coffeeshop.validation.imageSize;
 
 import io.leangen.geantyref.TypeFactory;
 import lombok.SneakyThrows;
@@ -16,7 +16,8 @@ import static org.junit.Assert.*;
 public class Base64ValidatorTest {
 
     private Base64Size base64SizeAnnotation;
-    private Base64Validator validator;
+    private Base64SizeValidator validator;
+
     private final String COFFEE_IMAGE_TEST = "src/test/java/resources/coffee-2.jpg";
     private final String COFFEE_IMAGE_TEST_ERROR = "src/test/java/resources/A_small_cup_of_coffee.JPG";
 
@@ -29,8 +30,8 @@ public class Base64ValidatorTest {
         return base64SizeAnnotation;
     }
 
-    private Base64Validator getValidator(Base64Size base64SizeAnnotation) {
-        validator = new Base64Validator();
+    private Base64SizeValidator getValidator(Base64Size base64SizeAnnotation) {
+        validator = new Base64SizeValidator();
         validator.initialize(base64SizeAnnotation);
         return validator;
     }

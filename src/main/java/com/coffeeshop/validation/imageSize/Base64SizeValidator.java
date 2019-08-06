@@ -1,9 +1,9 @@
-package com.coffeeshop.validation;
+package com.coffeeshop.validation.imageSize;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class Base64Validator implements ConstraintValidator<Base64Size, String> {
+public class Base64SizeValidator implements ConstraintValidator<Base64Size, String> {
 
     private int maxSize;
 

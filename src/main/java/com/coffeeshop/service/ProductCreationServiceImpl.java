@@ -9,7 +9,6 @@ import com.coffeeshop.model.admin.web.productCreationResponse.request.ProductReq
 import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductCreationResponse;
 import com.coffeeshop.repository.product.*;
 import com.coffeeshop.converter.productCreationConverter.response.ProductResponseConverter;
-import com.coffeeshop.validation.Base64Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
