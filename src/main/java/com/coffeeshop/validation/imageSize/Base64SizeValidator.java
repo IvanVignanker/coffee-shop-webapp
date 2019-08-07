@@ -8,9 +8,7 @@ public class Base64SizeValidator implements ConstraintValidator<Base64Size, Stri
     private int maxSize;
 
     @Override
-    public void initialize(Base64Size size) {
-        this.maxSize=size.maxSizeKB();
-    }
+    public void initialize(Base64Size size) {}
 
     @Override
     public boolean isValid(String base64, ConstraintValidatorContext constraintValidatorContext) {

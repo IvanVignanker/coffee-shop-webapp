@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = Base64SizeValidator.class)
 public @interface Base64Size {
-    String message() default "Invalid size of inputted image";
+    String message() default "Image size exceeded the maximum allowed";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
     int maxSizeKB() default 300;

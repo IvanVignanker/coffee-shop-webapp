@@ -18,16 +18,16 @@ import javax.transaction.Transactional;
 public class ProductCreationServiceImpl implements ProductCreationService {
 
     @Autowired
-    CommonRequestConverter commonConverter;
+    private CommonRequestConverter commonConverter;
 
     @Autowired
-    ProductResponseConverter productResponseConverter;
+    private ProductResponseConverter productResponseConverter;
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Autowired
-    ProductCoffeeRepository productCoffeeRepository;
+    private ProductCoffeeRepository productCoffeeRepository;
 
     @Override
     @Transactional

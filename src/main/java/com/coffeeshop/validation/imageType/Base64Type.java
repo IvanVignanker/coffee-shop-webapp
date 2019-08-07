@@ -6,10 +6,10 @@ import java.lang.annotation.*;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.METHOD})
+@Target(ElementType.FIELD)
 @Constraint(validatedBy = Base64TypeValidator.class)
 public @interface Base64Type {
-    String message() default "Invalid type of inputted image";
+    String message() default "Image type not allowed";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

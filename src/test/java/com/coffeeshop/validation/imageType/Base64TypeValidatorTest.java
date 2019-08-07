@@ -13,33 +13,41 @@ import static org.junit.Assert.assertTrue;
 
 public class Base64TypeValidatorTest {
 
-    private final String COFFEE_IMAGE_TEST_PNG = "src/test/java/resources/308425_preview.png";
-    private final String COFFEE_IMAGE_TEST_GIF = "src/test/java/resources/302421825060201.gif";
-    private final String COFFEE_IMAGE_TEST_PDF = "src/test/java/resources/s8usx-xutxv.pdf";
-    private final String COFFEE_IMAGE_TEST_JPG = "src/test/java/resources/coffee-2.jpg";
-    private final String COFFEE_IMAGE_TEST_ZIP = "src/test/java/resources/archive.zip";
-    private final String COFFEE_IMAGE_TEST_JPEG = "src/test/java/resources/f91516da1f314fcf828689db80d16677.jpeg";
+    private static final String COFFEE_IMAGE_TEST_PNG = "src/test/java/resources/imagetype/small_png_33KB.png";
+    private static final String COFFEE_IMAGE_TEST_GIF = "src/test/java/resources/imagetype/available_size_gif_224KB.gif";
+    private static final String COFFEE_IMAGE_TEST_PDF = "src/test/java/resources/imagetype/small_pdf_8KB.pdf";
+    private static final String COFFEE_IMAGE_TEST_JPG = "src/test/java/resources/imagetype/small_jpg_8KB.jpg";
+    private static final String COFFEE_IMAGE_TEST_ZIP = "src/test/java/resources/imagetype/small_zip_7KB.zip";
+    private static final String COFFEE_IMAGE_TEST_JPEG = "src/test/java/resources/imagetype/big_jpeg_416KB.jpeg";
 
-    private Base64TypeValidator validator = new Base64TypeValidator();
+    Base64TypeValidator validator = new Base64TypeValidator();
 
     @Test
-    public void testValidBase64ImageType() {
+    public void testValidNullBase64ImageTypePositive() {
         String imageNull = null;
+        assertTrue(validator.isValid(imageNull,null));
+    }
+
+    @Test
+    public void testValidEmptyBase64ImageTypeNegative() {
+        String imageEmpty = "";
+        assertFalse(validator.isValid(imageEmpty,null));
+    }
+
+    @Test
+    public void testValidBase64ImageTypePositive() {
         String imageJPG = encoder(COFFEE_IMAGE_TEST_JPG);
         String imageJPEG = encoder(COFFEE_IMAGE_TEST_JPEG);
-        assertTrue(validator.isValid(imageNull,null));
         assertTrue(validator.isValid(imageJPG, null));
         assertTrue(validator.isValid(imageJPEG, null));
     }
 
     @Test
-    public void testNotValidBase64ImageType() {
-        String imageEmpty = "";
+    public void testValidBase64ImageTypeNegative() {
         String imagePDF = encoder(COFFEE_IMAGE_TEST_PDF);
         String imageGIF = encoder(COFFEE_IMAGE_TEST_GIF);
         String imageZIP = encoder(COFFEE_IMAGE_TEST_ZIP);
         String imagePNG = encoder(COFFEE_IMAGE_TEST_PNG);
-        assertFalse(validator.isValid(imageEmpty,null));
         assertFalse(validator.isValid(imagePDF,null));
         assertFalse(validator.isValid(imageGIF,null));
         assertFalse(validator.isValid(imageZIP,null));

@@ -27,13 +27,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>jbig2-imageio</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <!--        JUnit test-->
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
@@ -50,28 +43,22 @@
             <version>1.3.9</version>
             <scope>test</scope>
         </dependency>
-        <!--        JUnit test-->
 
-        <!--        swagger-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>2.9.2</version>
         </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
-        <!--        swagger-->
 
-        <!--        liquibase-->
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
-        <!--        liquibase-->
 
         <dependency>
             <groupId>mysql</groupId>
