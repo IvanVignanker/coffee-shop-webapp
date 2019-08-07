@@ -1,6 +1,5 @@
 package com.coffeeshop.controller;
 
-import com.coffeeshop.validation.Base64Size;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

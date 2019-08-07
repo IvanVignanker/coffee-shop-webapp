@@ -2,7 +2,6 @@ package com.coffeeshop.model.customer.entity.product.productImage;
 
 import com.coffeeshop.model.customer.entity.base.BaseDate;
 import com.coffeeshop.model.customer.entity.product.product.Product;
-import com.coffeeshop.validation.Base64Size;
 import lombok.*;
 
 import javax.persistence.*;

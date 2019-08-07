@@ -1,4 +1,4 @@
-package com.coffeeshop.validation;
+package com.coffeeshop.validation.imageSize;
 
 import io.leangen.geantyref.TypeFactory;
 import lombok.SneakyThrows;
@@ -13,12 +13,15 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class Base64ValidatorTest {
+public class Base64SizeValidatorTest {
 
     private Base64Size base64SizeAnnotation;
-    private Base64Validator validator;
-    private final String COFFEE_IMAGE_TEST = "src/test/java/resources/coffee-2.jpg";
-    private final String COFFEE_IMAGE_TEST_ERROR = "src/test/java/resources/A_small_cup_of_coffee.JPG";
+    private Base64SizeValidator validator;
+
+    private static final int MAX_TEST_SIZE_9KB = 9;
+
+    private static final String COFFEE_IMAGE_TEST_8KB = "src/test/java/resources/imagetype/small_pdf_8KB.pdf";
+    private static final String COFFEE_IMAGE_TEST_402KB = "src/test/java/resources/imageSize/big_jpg_402KB.JPG";
 
     @SneakyThrows
     private Base64Size getInstanceOfAnnotation(int size) {
@@ -29,39 +32,35 @@ public class Base64ValidatorTest {
         return base64SizeAnnotation;
     }
 
-    private Base64Validator getValidator(Base64Size base64SizeAnnotation) {
-        validator = new Base64Validator();
+    private Base64SizeValidator getValidator(Base64Size base64SizeAnnotation) {
+        validator = new Base64SizeValidator();
         validator.initialize(base64SizeAnnotation);
         return validator;
     }
 
-    //empty
     @Test
-    public void testEmptyBase64ImageSize() {
-        validator = getValidator(getInstanceOfAnnotation(9));
+    public void testValidEmptyBase64ImageSizePositive() {
+        validator = getValidator(getInstanceOfAnnotation(MAX_TEST_SIZE_9KB));
         assertTrue(validator.isValid("", null));
     }
 
-    //null
     @Test
-    public void testNullBase64ImageSize(){
-        validator = getValidator(getInstanceOfAnnotation(9));
+    public void testValidNullBase64ImageSizePositive(){
+        validator = getValidator(getInstanceOfAnnotation(MAX_TEST_SIZE_9KB));
         assertTrue(validator.isValid(null, null));
     }
 
-    //valid image
     @Test
-    public void testValidBase64ImageSize() {
-        validator = getValidator(getInstanceOfAnnotation(9));
-        String image = encoder(COFFEE_IMAGE_TEST);
+    public void testValidBase64ImageSizePositive() {
+        validator = getValidator(getInstanceOfAnnotation(MAX_TEST_SIZE_9KB));
+        String image = encoder(COFFEE_IMAGE_TEST_8KB);
         assertTrue(validator.isValid(image,null));
     }
 
-    //not valid image
     @Test
-    public void testNotValidBase64ImageSize() {
-        validator = getValidator(getInstanceOfAnnotation(9));
-        String image = encoder(COFFEE_IMAGE_TEST_ERROR);
+    public void testValidBase64ImageSizeNegative() {
+        validator = getValidator(getInstanceOfAnnotation(MAX_TEST_SIZE_9KB));
+        String image = encoder(COFFEE_IMAGE_TEST_402KB);
         assertFalse(validator.isValid(image, null));
     }
 
