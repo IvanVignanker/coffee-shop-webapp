@@ -1,8 +1,10 @@
 package com.coffeeshop.converter.productCreationConverter.response;
 
+import com.coffeeshop.model.admin.response.ProductCoffeeCreationResponse;
+import com.coffeeshop.model.admin.response.ProductCreationResponse;
+import com.coffeeshop.model.admin.response.ProductMainCreationResponse;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productCoffee.ProductCoffee;
-import com.coffeeshop.model.admin.web.productCreationResponse.response.*;
 import org.springframework.stereotype.Component;
 
 @Component

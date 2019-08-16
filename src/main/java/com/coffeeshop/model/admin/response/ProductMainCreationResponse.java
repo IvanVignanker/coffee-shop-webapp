@@ -1,4 +1,4 @@
-package com.coffeeshop.model.admin.web.productCreationResponse.response;
+package com.coffeeshop.model.admin.response;
 
 import com.coffeeshop.model.customer.entity.product.product.status.ProductType;
 import lombok.*;

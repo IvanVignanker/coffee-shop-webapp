@@ -1,12 +1,12 @@
-package com.coffeeshop.service;
+package com.coffeeshop.service.productCreation;
 
-import com.coffeeshop.converter.CommonRequestConverter;
+import com.coffeeshop.converter.CommonConverter;
 import com.coffeeshop.exception.ProductNotFoundException;
-import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductMainCreationResponse;
+import com.coffeeshop.model.admin.response.ProductMainCreationResponse;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productCoffee.ProductCoffee;
-import com.coffeeshop.model.admin.web.productCreationResponse.request.ProductRequest;
-import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductCreationResponse;
+import com.coffeeshop.model.admin.request.ProductRequest;
+import com.coffeeshop.model.admin.response.ProductCreationResponse;
 import com.coffeeshop.repository.product.*;
 import com.coffeeshop.converter.productCreationConverter.response.ProductResponseConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import javax.transaction.Transactional;
 public class ProductCreationServiceImpl implements ProductCreationService {
 
     @Autowired
-    private CommonRequestConverter commonConverter;
+    private CommonConverter commonConverter;
 
     @Autowired
     private ProductResponseConverter productResponseConverter;

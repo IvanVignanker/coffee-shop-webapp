@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Getter @Component
-public class CommonRequestConverter {
+public class CommonConverter {
 
     ProductCoffeeRequestConverter productCoffeeRequestConverter;
     ProductRequestConverter productRequestConverter;
 
     @Autowired
-    public CommonRequestConverter(ProductRequestConverter productRequestConverter,
-                                  ProductCoffeeRequestConverter productCoffeeRequestConverter) {
+    public CommonConverter(ProductRequestConverter productRequestConverter,
+                           ProductCoffeeRequestConverter productCoffeeRequestConverter) {
         this.productRequestConverter=productRequestConverter;
         this.productCoffeeRequestConverter=productCoffeeRequestConverter;
     }
