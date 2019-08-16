@@ -1,6 +1,6 @@
 package com.coffeeshop.converter.productCreationConverter.request;
 
-import com.coffeeshop.model.admin.web.productCreationResponse.request.ProductCoffeeCreation;
+import com.coffeeshop.model.admin.request.ProductCoffeeCreation;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productCoffee.ProductCoffee;
 import org.springframework.stereotype.Component;

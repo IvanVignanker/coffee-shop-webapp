@@ -1,10 +1,10 @@
 package com.coffeeshop.controller.testController;
 
 import com.coffeeshop.exception.InputValidationException;
-import com.coffeeshop.model.admin.web.productCreationResponse.request.ProductRequest;
-import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductCreationResponse;
-import com.coffeeshop.model.admin.web.productCreationResponse.response.ProductMainCreationResponse;
-import com.coffeeshop.service.ProductCreationService;
+import com.coffeeshop.model.admin.request.ProductRequest;
+import com.coffeeshop.model.admin.response.ProductCreationResponse;
+import com.coffeeshop.model.admin.response.ProductMainCreationResponse;
+import com.coffeeshop.service.productCreation.ProductCreationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
