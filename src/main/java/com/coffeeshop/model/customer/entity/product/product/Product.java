@@ -16,6 +16,9 @@ import javax.persistence.*;
 @Table(name = "PRODUCTS")
 public class Product extends BaseDate {
 
+    @Column(name = "TITLE", length = 30, nullable = false)
+    private String title;
+
     @Column(name = "SHORT_DESCRIPTION", length = 100, nullable = false)
     private String shortDescription;
 

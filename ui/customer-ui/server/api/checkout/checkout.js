@@ -8,19 +8,20 @@ exports.getCheckout = function (request, response) {
   //from file
   json.readFile(file, function (err, obj) {
     if (err) {
+      err.status(500);
       console.error(err);
     }
-    response.send(obj);
+    response.status(200).send(obj);
   });
 
   //for spring
   let body = request.body;
 
-  rest.postJson(configuration.perEnvironment.backendUrl + '/customer/checkout', body)
-    .on('success', (backendResponseBody, backendResponseMeta) => {
-      response.json(backendResponseBody);
-    })
-    .on('fail', (backendResponseBody, backendResponseMeta) => {
-      response.status(backendResponseMeta.statusCode).send(backendResponseBody);
-    });
+  // rest.postJson(configuration.perEnvironment.backendUrl + '/customer/checkout', body)
+  //   .on('success', (backendResponseBody, backendResponseMeta) => {
+  //     response.json(backendResponseBody);
+  //   })
+  //   .on('fail', (backendResponseBody, backendResponseMeta) => {
+  //     response.status(backendResponseMeta.statusCode).send(backendResponseBody);
+  //   });
 };

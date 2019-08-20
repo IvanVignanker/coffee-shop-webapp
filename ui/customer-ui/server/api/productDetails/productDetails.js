@@ -9,17 +9,18 @@ exports.getProductDetails = function (request, response) {
   //from file
   json.readFile(file, function (err, obj) {
     if (err) {
+      err.status(500);
       console.error(err);
     }
-    response.send(obj);
+    response.status(200).send(obj);
   });
 
   //spring
-  rest.get(configuration.perEnvironment.backendUrl + '/customer/products/' + id)
-    .on('success', (backendResponseBody, backendResponseMeta) => {
-      response.json(backendResponseBody);
-    })
-    .on('fail', (backendResponseBody, backendResponseMeta) => {
-      response.status(backendResponseMeta.statusCode).send(backendResponseBody);
-    });
+  // rest.get(configuration.perEnvironment.backendUrl + '/customer/products/' + id)
+  //   .on('success', (backendResponseBody, backendResponseMeta) => {
+  //     response.writeHead(200, {'Content-Type': 'application/json'}).json(backendResponseBody).end();
+  //   })
+  //   .on('fail', (backendResponseBody, backendResponseMeta) => {
+  //     response.status(backendResponseMeta.statusCode).send(backendResponseBody);
+  //   });
 };
