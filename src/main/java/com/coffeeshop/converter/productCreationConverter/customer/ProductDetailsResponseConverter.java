@@ -21,7 +21,7 @@ public class ProductDetailsResponseConverter {
                                                        ProductCoffee productCoffee) {
         return ProductDetailsDTOResponse.builder()
                 .productId(product.getId())
-                .productName(product.getShortDescription())
+                .productName(product.getTitle())
                 .quantityAvailableKg(productItem)
                 .images((Collection<? extends String>) images.stream()
                         .map(image -> image.toString()).collect(Collectors.toList()))
@@ -29,7 +29,7 @@ public class ProductDetailsResponseConverter {
                         .strong(productCoffee.getStrong())
                         .sour(productCoffee.getSour())
                         .bitter(productCoffee.getBitter()).build())
-                .description(product.getDescription()).inStock(
+                .description(product.getShortDescription()).inStock(
                         InStockDTOResponse.builder()
                                 .isAvailable(product.getAvailable())
                                 .quantityAvailable(productQuantity).build())
