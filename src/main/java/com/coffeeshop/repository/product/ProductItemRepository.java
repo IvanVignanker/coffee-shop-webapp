@@ -5,7 +5,9 @@ import com.coffeeshop.model.customer.entity.product.productItem.status.ProductSt
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductItemRepository extends JpaRepository<ProductItem, Long> {
     List<ProductItem> findAllByStatus(ProductStatus productStatus);
+    Optional<List<ProductItem>> findAllByProductId(Long id);
 }
