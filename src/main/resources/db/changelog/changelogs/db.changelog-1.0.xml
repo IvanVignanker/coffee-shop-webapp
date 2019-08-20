@@ -343,6 +343,16 @@
         </createTable>
     </changeSet>
 
+
+
+
+
+
+
+
+
+
+
     <changeSet id="10" author="Evgeny">
         <addColumn tableName="PRODUCTS">
             <column name="TITLE" type="varchar(30)"/>
