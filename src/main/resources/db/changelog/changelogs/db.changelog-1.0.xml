@@ -345,7 +345,9 @@
 
     <changeSet id="10" author="Evgeny">
         <addColumn tableName="PRODUCTS">
-            <column name="TITLE" type="varchar(30)"/>
+            <column name="PRODUCT_NAME" type="VARCHAR(100)">
+                <constraints unique="true" nullable="false"/>
+            </column>
         </addColumn>
     </changeSet>
 

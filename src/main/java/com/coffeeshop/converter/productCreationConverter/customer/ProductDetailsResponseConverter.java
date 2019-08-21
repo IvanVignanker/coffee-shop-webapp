@@ -29,7 +29,7 @@ public class ProductDetailsResponseConverter {
                         .strong(productCoffee.getStrong())
                         .sour(productCoffee.getSour())
                         .bitter(productCoffee.getBitter()).build())
-                .description(product.getShortDescription()).inStock(
+                .description(product.getDescription()).inStock(
                         InStockDTOResponse.builder()
                                 .isAvailable(product.getAvailable())
                                 .quantityAvailable(productQuantity).build())
