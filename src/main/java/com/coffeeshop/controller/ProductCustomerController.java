@@ -1,4 +1,4 @@
-package com.coffeeshop.controller.customer;
+package com.coffeeshop.controller;
 
 import com.coffeeshop.model.customer.web.productDetails.ProductDetailsDTOResponse;
 import com.coffeeshop.service.customer.ProductSearchService;
@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class ProductController {
+public class ProductCustomerController {
 
     @Autowired
-    ProductSearchService productSearchService;
+    private ProductSearchService productSearchService;
 
     @GetMapping("/customer/products/{id}")
     public ProductDetailsDTOResponse findProductById(@PathVariable("id") Long id) {
