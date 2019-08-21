@@ -39,7 +39,7 @@ public class ProductCreationManagementController {
             throw new InputValidationException(result);
         }
         productItemService.createProductItems(productMainRequests);
-        
+
         return productItemRepository.findAll();
     }
 
