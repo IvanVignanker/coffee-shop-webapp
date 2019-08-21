@@ -343,4 +343,12 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="10" author="Evgeny">
+        <addColumn tableName="PRODUCTS">
+            <column name="PRODUCT_NAME" type="VARCHAR(100)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

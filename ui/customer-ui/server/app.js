@@ -7,7 +7,6 @@ const DIST_FOLDER = __dirname + '/../dist/customer-ui';
 const ngExpressEngine = require('@nguniversal/express-engine').ngExpressEngine;
 app.engine('html', ngExpressEngine({}));
 
-
 app.set('view engine', 'html');
 app.set('views', DIST_FOLDER);
 app.use(express.static(DIST_FOLDER));
