@@ -23,7 +23,7 @@ public class CustomerInfoDTORequest {
     private String email;
 
     @ApiModelProperty(example = "+972501112233")
-    private String phone;
+    private String phoneNumber;
 
-    ContactInfoDTORequest contactInfoDTORequest;
+    ContactInfoDTORequest customerInfo;
 }

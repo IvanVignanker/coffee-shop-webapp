@@ -19,20 +19,16 @@ public class DeliveryDTORequest {
     private String officialName;
 
     @NotBlank @Length(min = 2, max = 20)
-//    @Pattern(regexp = "^[a-zA-Z]", message = "City may contain only alphabet characters")
     @ApiModelProperty(example = "Eilat")
     private String city;
 
     @NotBlank @Length(min = 2, max = 20)
-//    @Pattern(regexp = "^[a-zA-Z]", message = "Street may contain only alphabet characters")
     @ApiModelProperty(example = "Rotshild")
     private String street;
-
 
     @ApiModelProperty(example = "11")
     private String houseNumber;
 
-    
     @ApiModelProperty(example = "115")
     private String apartment;
     @ApiModelProperty(example = "1")

@@ -13,10 +13,10 @@ import java.util.List;
 public class CheckoutSubmitDTORequest {
 
     @Valid
-    CustomerInfoDTORequest customerInfoDTORequest;
+    CustomerInfoDTORequest customerInfo;
 
     @Valid
-    DeliveryDTORequest deliveryDTORequest;
+    DeliveryDTORequest delivery;
 
     @Singular
     List<CheckoutProductsDTORequest> products;
