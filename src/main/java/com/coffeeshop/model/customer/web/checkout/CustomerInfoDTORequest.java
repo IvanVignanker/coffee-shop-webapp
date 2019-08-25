@@ -1,5 +1,6 @@
 package com.coffeeshop.model.customer.web.checkout;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -14,11 +15,15 @@ import javax.validation.constraints.NotBlank;
 public class CustomerInfoDTORequest {
 
     @Length(min = 3, max = 100)
+    @ApiModelProperty(example = "Pret a Manger")
     private String entityName;
 
     @NotBlank @Email @Length(min = 3, max = 20)
+    @ApiModelProperty(example = "john.doe@site.com")
     private String email;
-    private String phone;
 
-    ContactInfoDTORequest contactInfoDTORequest;
+    @ApiModelProperty(example = "+972501112233")
+    private String phoneNumber;
+
+    ContactInfoDTORequest customerInfo;
 }
