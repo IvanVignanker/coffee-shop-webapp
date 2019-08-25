@@ -9,13 +9,12 @@ public class ProductRequestConverter {
 
     public Product converterToEntity(ProductCreationRequest productCreationRequest) {
         return Product.builder()
+                .productName(productCreationRequest.getProductName())
                 .shortDescription(productCreationRequest.getShortDescription())
                 .description(productCreationRequest.getDescription())
                 .previewImage(productCreationRequest.getPreviewImage())
                 .unitPrice(productCreationRequest.getUnitPrice())
                 .productCategoryId(productCreationRequest.getProductCategoryId())
-                .available(productCreationRequest.getAvailable())
-                .version(productCreationRequest.getVersion())
                 .build();
     }
 }
