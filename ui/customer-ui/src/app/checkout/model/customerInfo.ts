@@ -1,7 +1,5 @@
 import { ContactInfo } from "./contactInfo";
 import { Delivery } from "./delivery";
-import { Products } from "./products";
-import { Charges } from "./charges";
 
 export class CustomerInfo {
 
@@ -9,12 +7,14 @@ export class CustomerInfo {
   private _email: string;
   private _phoneNumber: string;
   private _contactInfo: ContactInfo;
+  private _delivery: Delivery;
 
-  constructor(entityName: string, email: string, phoneNumber: string, contactInfo: ContactInfo) {
+  constructor(entityName: string, email: string, phoneNumber: string, contactInfo: ContactInfo, delivery: Delivery,) {
     this._entityName=entityName;
     this._email=email;
     this._phoneNumber=phoneNumber;
     this._contactInfo=contactInfo;
+    this._delivery=delivery;
   }
 
   get entityName(): string {
@@ -39,5 +39,12 @@ export class CustomerInfo {
 
   set phoneNumber(value: string) {
     this._phoneNumber = value;
+  }
+  get delivery(): Delivery {
+    return this._delivery;
+  }
+
+  set delivery(value: Delivery) {
+    this._delivery = value;
   }
 }

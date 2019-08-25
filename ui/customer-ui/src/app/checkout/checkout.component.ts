@@ -13,7 +13,6 @@ import { CheckoutResponse } from "./model/checkoutResponse";
 @Injectable()
 export class CheckoutComponent implements OnInit {
 
-  // private json: string;
   public checkoutResponse: CheckoutResponse;
   public defaultRequest: CheckoutRequest = CheckoutRequest.prototype.getDefaultRequest();
 
@@ -23,7 +22,6 @@ export class CheckoutComponent implements OnInit {
   getCheckout(checkoutRequest: CheckoutRequest) {
     return this.checkoutRoutingHttpService.getCheckout(checkoutRequest).subscribe(data => {
       this.checkoutResponse = data;
-      // this.json = JSON.stringify(this.checkoutResponse);
       this.router.navigate(['/received/' + this.checkoutResponse.orderId]);
     });
   }
