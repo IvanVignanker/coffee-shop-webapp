@@ -20,6 +20,4 @@ public class CheckoutSubmitDTORequest {
 
     @Singular
     List<CheckoutProductsDTORequest> products;
-
-    ChangesDTORequest changes;
 }
