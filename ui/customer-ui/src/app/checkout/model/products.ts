@@ -1,12 +1,10 @@
 export class Products {
 
   private _productId: number;
-  private _weight: number;
-  private _quantity: number;
+    private _quantity: number;
 
   constructor(productId: number, weight: number, quantity: number) {
     this._productId=productId;
-    this._weight=weight;
     this._quantity=quantity;
   }
 
@@ -16,14 +14,6 @@ export class Products {
 
   set productId(value: number) {
     this._productId = value;
-  }
-
-  get weight(): number {
-    return this._weight;
-  }
-
-  set weight(value: number) {
-    this._weight = value;
   }
 
   get quantity(): number {

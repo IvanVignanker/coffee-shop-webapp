@@ -15,11 +15,6 @@ public class CheckoutSubmitDTORequest {
     @Valid
     CustomerInfoDTORequest customerInfo;
 
-    @Valid
-    DeliveryDTORequest delivery;
-
     @Singular
     List<CheckoutProductsDTORequest> products;
-
-    ChangesDTORequest changes;
 }

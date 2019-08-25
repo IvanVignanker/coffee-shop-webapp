@@ -14,6 +14,9 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class CustomerInfoDTORequest {
 
+    ContactInfoDTORequest contactInfo;
+    DeliveryDTORequest delivery;
+
     @Length(min = 3, max = 100)
     @ApiModelProperty(example = "Pret a Manger")
     private String entityName;
@@ -24,6 +27,4 @@ public class CustomerInfoDTORequest {
 
     @ApiModelProperty(example = "+972501112233")
     private String phoneNumber;
-
-    ContactInfoDTORequest customerInfo;
-}
+    }
