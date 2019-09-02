@@ -1,0 +1,54 @@
+*{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-control {
+  width: 60%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  margin-left: 30px;
+}
+
+.range-slider {
+  margin-left: 15px;
+}
+
+.accordion {
+  width: 70%;
+  background-color: white;
+  text-align: left;
+}
+
+.accordion .card {
+  border: none;
+}
+
+.accordion input {
+  margin-left: 20px;
+}
+
+.accordion .card-header {
+  background-color: white;
+  border: none;
+}
+
+.accordion button {
+  color: grey;
+  text-decoration: none;
+}
+
+.accordion button:hover {
+  color: #40e0d0;
+  text-decoration: none;
+}
+
+.font-weight-bold h4 {
+  margin-left: 30px;
+}
+
+.font-weight-bold button {
+  width: 80%;
+  margin-bottom: 10px;
+}

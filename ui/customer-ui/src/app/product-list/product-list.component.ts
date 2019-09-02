@@ -2,7 +2,6 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import { ProductListRoutingHttpService } from "./http/product-list-routing-http.service";
 import { ProductListResponse } from "./model/productListResponse";
 import {ProductListRequest} from "./model/productListRequest";
-import {CheckoutRequest} from "../checkout/model/checkoutRequest";
 
 @Component({
   selector: 'app-product-list',
@@ -14,15 +13,15 @@ import {CheckoutRequest} from "../checkout/model/checkoutRequest";
 export class ProductListComponent implements OnInit {
 
   private json: string;
-  public productListResponse: ProductListResponse;
+  public products: ProductListResponse;
   private defaultRequest: ProductListRequest = ProductListRequest.prototype.getDefaultRequest();
 
   constructor(private listRoutingHttpService: ProductListRoutingHttpService) { }
 
   getProductList(productListRequest: ProductListRequest) {
     return this.listRoutingHttpService.getProducts(productListRequest).subscribe(data => {
-        this.productListResponse = data;
-        this.json = JSON.stringify(this.productListResponse);
+        this.products = data;
+        this.json = JSON.stringify(this.products);
       });
   }
 
