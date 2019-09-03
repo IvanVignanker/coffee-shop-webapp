@@ -1,0 +1,15 @@
+.page-header h4 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  margin-top: 15px;
+  height: 40px;
+  box-shadow: 10px 10px 40px #e7e1e8;
+}
+
+.sticky-top {
+  margin-left: 100px;
+}
+
+.col-8 {
+  right: 100px;
+}

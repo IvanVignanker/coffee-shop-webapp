@@ -1,0 +1,183 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()"><br>
+
+  <div class="font-weight-bold"><h4>Coffee</h4></div>
+
+  <input [formControlName]="'search'" type="text" class="form-control" placeholder="search"><br>
+
+  <div class="font-weight-bold"><h4>Price</h4></div>
+  <ng5-slider class="range-slider" [options]="options" formControlName="sliderControl"></ng5-slider>
+
+  <div class="font-weight-bold"><h4>Category</h4></div>
+
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Bitter</button>
+        </h5>
+      </div>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'bitterMin'"
+                     type="radio" class="form-radio" value="1" name="bitterMin"> 1
+              <input [formControlName]="'bitterMin'"
+                     type="radio" class="form-radio" value="2" name="bitterMin"> 2
+              <input [formControlName]="'bitterMin'"
+                     type="radio" class="form-radio" value="3" name="bitterMin"> 3
+              <input [formControlName]="'bitterMin'"
+                     type="radio" class="form-radio" value="4" name="bitterMin"> 4
+              <input [formControlName]="'bitterMin'"
+                     type="radio" class="form-radio" value="5" name="bitterMin"> 5
+            </div>
+          </div>
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'bitterMax'"
+                     type="radio" class="form-radio" value="1" name="bitterMax"> 1
+              <input [formControlName]="'bitterMax'"
+                     type="radio" class="form-radio" value="2" name="bitterMax"> 2
+              <input [formControlName]="'bitterMax'"
+                     type="radio" class="form-radio" value="3" name="bitterMax"> 3
+              <input [formControlName]="'bitterMax'"
+                     type="radio" class="form-radio" value="4" name="bitterMax"> 4
+              <input [formControlName]="'bitterMax'"
+                     type="radio" class="form-radio" value="5" name="bitterMax"> 5
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Sour</button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'sourMin'"
+                     type="radio" class="form-radio" value="1" name="sourMin"> 1
+              <input [formControlName]="'sourMin'"
+                     type="radio" class="form-radio" value="2" name="sourMin"> 2
+              <input [formControlName]="'sourMin'"
+                     type="radio" class="form-radio" value="3" name="sourMin"> 3
+              <input [formControlName]="'sourMin'"
+                     type="radio" class="form-radio" value="4" name="sourMin"> 4
+              <input [formControlName]="'sourMin'"
+                     type="radio" class="form-radio" value="5" name="sourMin"> 5
+            </div>
+          </div>
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'sourMax'"
+                     type="radio" class="form-radio" value="1" name="sourMax"> 1
+              <input [formControlName]="'sourMax'"
+                     type="radio" class="form-radio" value="2" name="sourMax"> 2
+              <input [formControlName]="'sourMax'"
+                     type="radio" class="form-radio" value="3" name="sourMax"> 3
+              <input [formControlName]="'sourMax'"
+                     type="radio" class="form-radio" value="4" name="sourMax"> 4
+              <input [formControlName]="'sourMax'"
+                     type="radio" class="form-radio" value="5" name="sourMax"> 5
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Roasts</button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'roasts'"
+                     type="radio" class="form-radio" value="light" name="roasts"> Light
+              <input [formControlName]="'roasts'"
+                     type="radio" class="form-radio" value="medium" name="roasts"> Medium
+              <input [formControlName]="'roasts'"
+                     type="radio" class="form-radio" value="medium dark" name="roasts"> Medium Dark
+              <input [formControlName]="'roasts'"
+                     type="radio" class="form-radio" value="dark" name="roasts"> Dark
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingFour">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">Instant</button>
+        </h5>
+      </div>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'instant'"
+                     type="radio" class="form-radio" value="yes" name="instant"> Yes
+              <input [formControlName]="'instant'"
+                     type="radio" class="form-radio" value="no" name="instant"> No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingSix">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">Decoffeein</button>
+        </h5>
+      </div>
+      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'decoffeein'"
+                     type="radio" class="form-radio" value="yes" name="decoffeein"> Yes
+              <input [formControlName]="'decoffeein'"
+                     type="radio" class="form-radio" value="no" name="decoffeein"> No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingFive">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">Ground</button>
+        </h5>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="content">
+            <div role="dropdown-content">
+              <input [formControlName]="'ground'"
+                     type="radio" class="form-radio" value="yes" name="ground"> Yes
+              <input [formControlName]="'ground'"
+                     type="radio" class="form-radio" value="no" name="ground"> No
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-weight-bold my-4 text-center">
+      <button type="submit" class="btn btn-outline-info button-reset">APPLY</button><br>
+      <button type="reset" class="btn btn-outline-secondary button-reset">RESET</button>
+    </div>
+
+  </div>
+</form>
