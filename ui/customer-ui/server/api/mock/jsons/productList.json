@@ -1,11 +1,11 @@
 {
   "popular": {
     "productId": 123123,
-    "title": "CoffeeTitle",
-    "shortDescription": "Not bad coffee",
+    "title": "PopularCoffeeTitle",
+    "shortDescription": "Credo in Deum, Patrem omnipotentem, Creatorem caeli et terrae. Et in Iesum Christum",
     "type": "coffee (coffee | tea)",
     "previewImage": "base64 [STRING]",
-    "price": 100.00,
+    "price": 500.00,
     "inStockCount": 30,
     "productParameters": {
       "flavour": "strong [STRING]",

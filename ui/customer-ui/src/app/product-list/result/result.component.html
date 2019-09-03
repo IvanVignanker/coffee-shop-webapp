@@ -1,0 +1,104 @@
+<div class="card-body">
+  <div class="row">
+    <div class="card" style="width: 500px; height: 450px">
+      <div class="container" style="margin: 15px">
+        <div class="row" style="text-align: left">
+          <div class="col-6">
+            <img style="width: 225px; height: 270px; margin-bottom: 10px"
+                 src="http://confluence.tel-ran.net/download/attachments/9962133/Image_Brazilian%20Santos_Product%20Listing.png?version=1&modificationDate=1563050352000&api=v2">
+            <a class="card-title" href="#/productDetails/1"
+               style="text-decoration: none; color: black">{{this.products.popular.title}}</a>
+            <p style="font-size: 10px">{{this.products.popular.shortDescription}}</p>
+          </div>
+          <div class="col-6" style="font-size: 15px; border-radius: 0; border: none; text-align: left">
+            <p style="text-transform: uppercase">Quantity</p>
+            <input type="number" min="1" step="1" value="1">
+            <p style="text-transform: uppercase">Weight</p>
+            <input type="number" min="1" step="1" value="1">
+            <div class="row" style="margin-top: 15px">
+              <div class="col-6">
+                <p style="text-transform: uppercase">Price </p>
+              </div>
+              <div class="col-6">
+                <i style="color: #e8b846">{{'USD ' + products.popular.price}}</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p style="text-transform: uppercase; margin-top: 15px">Total </p>
+              </div>
+              <div class="col-6">
+                <i style="color: #e8b846">{{'USD ' + products.popular.price*3}}</i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p  style="margin: 0">Strong</p>
+              </div>
+              <div class="col-6">
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+                <i class="fa fa-leaf"></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p  style="margin: 0">Bitter</p>
+              </div>
+              <div class="col-6">
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p  style="margin: 0">Sour </p>
+              </div>
+              <div class="col-6">
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+                <i class="fa fa-leaf" style="color: #e8b846"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+          <div class="col-6">
+            <button class="btn btn-light" style="color: grey; border-color:grey;
+              width: 200px; height: 30px; border-radius: 0; font-size: 12px">ADD TO WISHLIST</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-dark" style="color: white;
+              width: 200px; height: 30px; border-radius: 0; font-size: 12px">ADD TO CART</button>
+          </div>
+      </div>
+    </div>
+    </div>
+    <div class="card" style="width: 250px; height: 450px">
+      <img src="http://confluence.tel-ran.net/download/attachments/9962133/Image_Brazilian%20Santos_Product%20Listing.png?version=1&modificationDate=1563050352000&api=v2"
+           class="card-img-top" style="height: 275px">
+      <div class="container" style="text-align: center; margin-top: 25px">
+        <a class="card-title" href="#/productDetails/1"
+           style="margin-top: 20px; text-decoration: none; color: black">CoffeeTitle#2</a>
+        <h3 class="card-title" style="color: #e8b846">USD 1000,00</h3>
+        <button class="btn btn-dark" style="width: 200px; height: 30px; border-radius: 0;
+          color: white; font-size: 12px">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+  <div class="card-columns">
+    <div *ngFor="let product of products.products" class="card"
+         style="width: 250px; height: 450px">
+      <img src="http://confluence.tel-ran.net/download/attachments/9962133/Image_Peru_Product%20Listing.png?version=1&modificationDate=1563050353000&api=v2"
+           class="card-img-top" style="height: 275px">
+      <div class="container" style="text-align: center; margin-top: 25px">
+        <a class="card-title" href="#/productDetails/1"
+           style="margin-top: 20px; text-decoration: none; color: black">{{this.product.title}}</a>
+        <h3 class="card-title" style="color: #e8b846">USD {{this.product.price}}</h3>
+        <button class="btn btn-dark" style="width: 200px; height: 30px; border-radius: 0;
+    color: white; font-size: 12px">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+</div>

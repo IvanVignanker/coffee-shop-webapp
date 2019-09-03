@@ -3,80 +3,14 @@
   <h4 align="center">Popular right now</h4>
 </div>
 <div class="card-body">
-<div class="row">
-  <div class="col-4">
-    <form class="sticky-top">
-      <app-search-form></app-search-form>
-    </form>
+  <div class="row">
+    <div class="col-4">
+      <form class="sticky-top">
+        <app-search-form></app-search-form>
+      </form>
+    </div>
+    <div class="col-8">
+      <app-result></app-result>
+    </div>
   </div>
-
-  <div class="col-8">
-    <h4>Popular</h4>
-    <table class="table table-hover table-bordered">
-      <thead class="alert-info">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Short Description</th>
-        <th>Type</th>
-        <th>Images</th>
-        <th>Price</th>
-        <th>in Stock</th>
-        <th>Flavour</th>
-        <th>Rate</th>
-        <th>is Decaf</th>
-        <th>Coffee Type</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr >
-        <td>{{this.products.popular.productId}}</td>
-        <td>{{this.products.popular.title}}</td>
-        <td>{{this.products.popular.shortDescription}}</td>
-        <td>{{this.products.popular.type}}</td>
-        <td>{{this.products.popular.previewImage}}</td>
-        <td>{{this.products.popular.price}}</td>
-        <td>{{this.products.popular.inStockCount}}</td>
-        <td>{{this.products.popular.productParameters.flavour}}</td>
-        <td>{{this.products.popular.productParameters.rate}}</td>
-        <td>{{this.products.popular.productParameters.decaf}}</td>
-        <td>{{this.products.popular.productParameters.coffeeType}}</td>
-      </tr>
-      </tbody>
-    </table>
-    <h4>Products</h4>
-    <table class="table table-hover table-bordered">
-      <thead class="alert-info">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Short Description</th>
-        <th>Type</th>
-        <th>Images</th>
-        <th>Price</th>
-        <th>in Stock</th>
-        <th>Flavour</th>
-        <th>Rate</th>
-        <th>is Decaf</th>
-        <th>Coffee Type</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let product of products.products">
-        <td>{{this.product.productId}}</td>
-        <td>{{this.product.title}}</td>
-        <td>{{this.product.shortDescription}}</td>
-        <td>{{this.product.type}}</td>
-        <td>{{this.product.previewImage}}</td>
-        <td>{{this.product.price}}</td>
-        <td>{{this.product.inStockCount}}</td>
-        <td>{{this.product.productParameters.flavour}}</td>
-        <td>{{this.product.productParameters.rate}}</td>
-        <td>{{this.product.productParameters.decaf}}</td>
-        <td>{{this.product.productParameters.coffeeType}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 </div>
