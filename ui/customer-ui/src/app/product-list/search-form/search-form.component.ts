@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
+import {Options} from "ng5-slider";
 
 @Component({
   selector: 'app-search-form',
@@ -17,14 +18,20 @@ export class SearchFormComponent implements OnInit {
   sourMax: number;
   roasts: string;
   instant: boolean;
-  decoffein: boolean;
+  decoffeein: boolean;
   ground: boolean;
+
+  options: Options = {
+    floor: 0,
+    ceil: 250
+  };
 
   constructor() { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
+      sliderControl: new FormControl([0, 250]),
       bitterMin: new FormControl(''),
       bitterMax: new FormControl(''),
       sourMin: new FormControl(''),

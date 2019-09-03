@@ -5,9 +5,7 @@
   <input [formControlName]="'search'" type="text" class="form-control" placeholder="search"><br>
 
   <div class="font-weight-bold"><h4>Price</h4></div>
-  <div class="range-slider">
-    <app-range-multiply-slider></app-range-multiply-slider><br>
-  </div>
+  <ng5-slider class="range-slider" [options]="options" formControlName="sliderControl"></ng5-slider>
 
   <div class="font-weight-bold"><h4>Category</h4></div>
 

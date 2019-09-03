@@ -16,8 +16,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from "./product-list/slider/slider.component";
 import { SearchFormComponent } from './product-list/search-form/search-form.component';
-import { RangeMultiplySliderComponent } from './product-list/search-form/range-multiply-slider/range-multiply-slider.component';
-import {Ng5SliderModule} from "ng5-slider";
+import { Ng5SliderModule} from "ng5-slider";
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import {Ng5SliderModule} from "ng5-slider";
     FooterComponent,
     HeaderComponent,
     SliderComponent,
-    SearchFormComponent,
-    RangeMultiplySliderComponent
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
