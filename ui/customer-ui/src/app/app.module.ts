@@ -17,7 +17,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SliderComponent } from "./product-list/slider/slider.component";
 import { SearchFormComponent } from './product-list/search-form/search-form.component';
 import { Ng5SliderModule} from "ng5-slider";
-import { ResultComponent } from './product-list/result/result.component';
+import { PopularResultComponent } from './product-list/product-list-result/popular-result/popular-result.component';
+import { ProductListMainResultComponent } from './product-list/product-list-result/product-list-main-result/product-list-main-result.component';
+import { ProductListResultComponent } from './product-list/product-list-result/product-list-result.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ResultComponent } from './product-list/result/result.component';
     HeaderComponent,
     SliderComponent,
     SearchFormComponent,
-    ResultComponent
+    PopularResultComponent,
+    ProductListMainResultComponent,
+    ProductListResultComponent
   ],
   imports: [
     BrowserModule,
