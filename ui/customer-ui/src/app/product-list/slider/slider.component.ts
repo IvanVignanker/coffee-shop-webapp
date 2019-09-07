@@ -16,6 +16,8 @@ export class SliderComponent implements OnInit {
   imageT = require('../../../assets/imagesSlider/guide-banner.jpg');
   // @ts-ignore
   imageFo = require('../../../assets/imagesSlider/tropical-beach-garden-view.jpg');
+  // @ts-ignore
+  imageSix = require('../../../assets/imagesSlider/Image_Product Listing.png');
 
   constructor() {
   }

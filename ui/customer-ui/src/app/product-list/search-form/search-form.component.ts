@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup} from '@angular/forms';
-import {Options} from "ng5-slider";
+import { FormControl, FormGroup } from '@angular/forms';
+import { Options } from "ng5-slider";
 
 @Component({
   selector: 'app-search-form',

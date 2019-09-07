@@ -1,0 +1,138 @@
+.card {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-radius: 0;
+  border: none;
+  box-shadow: 5px 5px 5px 5px #e7e1e8;
+  height: 450px;
+}
+
+.row .popular-big-card .container {
+  margin-top: 15px;
+}
+
+.row .popular-big-card {
+  width: 450px;
+  margin: 15px 15px 15px 30px;
+}
+
+.row .popular-big-card .container .popular-content-group {
+  text-align: left;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-left img {
+  width: 210px;
+  height: 270px;
+  margin-bottom: 10px;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-left a {
+  text-decoration: none;
+  color: black;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-left p {
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right {
+  font-size: 15px;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .quantity-title {
+  text-transform: uppercase;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .weight-title {
+  text-transform: uppercase;
+  margin-top: 15px
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .native-price {
+  margin-top: 15px;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .native-price p {
+  text-transform: uppercase;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .native-price i {
+  color: #e8b846;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .total-price p {
+  text-transform: uppercase;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .total-price i {
+  color: #e8b846;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .beans p {
+  margin: 0;
+}
+
+.row .popular-big-card .container .popular-content-group .popular-big-right .beans img {
+  color: #e8b846;
+  width: 15px;
+  height: 15px;
+  margin-right: 3px
+}
+
+.row .popular-big-card .container .popular-button-group {
+  margin-top: 10px;
+}
+
+.row .popular-big-card .container .popular-button-group .add-to-wishlist {
+  color: grey;
+  border-color:grey;
+  width: 80%;
+  height: 30px;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.row .popular-big-card .container .popular-button-group .add-to-card {
+  color: white;
+  width: 80%;
+  height: 30px;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.row .popular-small-card {
+  width: 250px;
+  height: 450px;
+  margin-top: 15px;
+  margin-left: 35px;
+}
+
+.row .popular-small-card img {
+  height: 275px;
+}
+
+.row .popular-small-card .container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.row .popular-small-card .container a {
+  margin-top: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.row .popular-small-card .container h3 {
+  color: #e8b846;
+}
+
+.row .popular-small-card .container button {
+  width: 200px;
+  height: 30px;
+  border-radius: 0;
+  color: white;
+  font-size: 12px;
+}

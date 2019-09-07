@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="popular-big-card card">
+    <div class="container">
+      <div class="popular-content-group row">
+        <div class="popular-big-left col-6">
+          <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png">
+          <a class="card-title" routerLink="/productDetails/{{this.products.popular.productId}}">
+            {{this.products.popular.title}}</a>
+          <p>{{this.products.popular.shortDescription}}</p>
+        </div>
+        <div class="popular-big-right col-6">
+          <p class="quantity-title">Quantity</p>
+          <input type="number" min="1" step="1" value="1">
+          <p class="weight-title">Weight</p>
+          <input type="number" min="1" step="1" value="1">
+          <div class="native-price row">
+            <div class="col-6">
+              <p>Price </p>
+            </div>
+            <div class="col-6">
+              <i>{{'USD ' + products.popular.price}}</i>
+            </div>
+          </div>
+          <div class="total-price row">
+            <div class="col-6">
+              <p>Total </p>
+            </div>
+            <div class="col-6">
+              <i>{{'USD ' + products.popular.price*3}}</i>
+            </div>
+          </div>
+          <div class="beans">
+            <div class="strong-beans row">
+              <div class="col-6">
+                <p>Strong</p>
+              </div>
+              <div class="col-6">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <!--              https://www.flaticon.com/premium-icon/coffee-bean_1484412-->
+              </div>
+            </div>
+            <div class="bitter-beans row">
+              <div class="col-6">
+                <p>Bitter</p>
+              </div>
+              <div class="col-6">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+              </div>
+            </div>
+            <div class="sour-beans row">
+              <div class="col-6">
+                <p>Sour </p>
+              </div>
+              <div class="col-6">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popular-button-group row">
+        <div class="col-6">
+          <button class="add-to-wishlist btn btn-light" (click)="addToWishList()">ADD TO WISHLIST</button>
+        </div>
+        <div class="col-6">
+          <button class="add-to-card btn btn-dark" (click)="addToCard()">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popular-small-card card">
+    <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png"
+         class="card-img-top">
+    <div class="container">
+      <a class="card-title" routerLink="/productDetails/{{this.products.products[0].productId}}">
+        {{this.products.products[0].title}}</a>
+      <h3 class="card-title">USD {{this.products.products[0].price}}</h3>
+      <button class="btn btn-dark" (click)="addToCard()">ADD TO CART</button>
+    </div>
+  </div>
+</div>
