@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ProductListResponse} from "../../model/productListResponse";
 import {ProductListRequest} from "../../model/productListRequest";
 import {ProductListRoutingHttpService} from "../../http/product-list-routing-http.service";
+import {Products} from "../../../checkout/model/products";
 
 @Component({
   selector: 'app-product-list-main-result',
@@ -10,21 +11,11 @@ import {ProductListRoutingHttpService} from "../../http/product-list-routing-htt
 })
 export class ProductListMainResultComponent implements OnInit {
 
-  private json: string;
-  public products: ProductListResponse;
-  private defaultRequest: ProductListRequest = ProductListRequest.prototype.getDefaultRequest();
+  @Input('products') products: ProductListResponse;
 
-  constructor(private listRoutingHttpService: ProductListRoutingHttpService) { }
-
-  getProductList(productListRequest: ProductListRequest) {
-    return this.listRoutingHttpService.getProducts(productListRequest).subscribe(data => {
-      this.products = data;
-      this.json = JSON.stringify(this.products);
-    });
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.getProductList(this.defaultRequest);
   }
 
   addToCard() {
