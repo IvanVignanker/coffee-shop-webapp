@@ -15,7 +15,7 @@ public class ProductDTOResponse {
     private String type;
     private String previewImage;
     private Double price;
-    private Integer inStockCount;
+    private Integer availableAmount;
 
     ProductsParametersDTOResponse productsParametersDTO;
 }

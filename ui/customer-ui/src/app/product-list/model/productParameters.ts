@@ -1,31 +1,41 @@
 export class ProductParameters {
 
-  private _flavour: string;
-  private _rate: number;
+  private _strong: number;
+  private _bitter: number;
+  private _sour: number;
   private _decaf: boolean;
   private _coffeeType: string;
 
-  constructor(flavour: string, rate: number, decaf: boolean, coffeeType: string){
-    this._flavour=flavour;
-    this._rate=rate;
+  constructor(strong: number, bitter: number, sour: number, decaf: boolean, coffeeType: string){
+    this._strong=strong;
+    this._bitter=bitter;
+    this._sour=sour;
     this._decaf=decaf;
     this._coffeeType=coffeeType;
   }
 
-  get flavour(): string {
-    return this._flavour;
+  get sour(): number {
+    return this._sour;
   }
 
-  set flavour(value: string) {
-    this._flavour = value;
+  set sour(value: number) {
+    this._sour = value;
   }
 
-  get rate(): number {
-    return this._rate;
+  get bitter(): number {
+    return this._bitter;
   }
 
-  set rate(value: number) {
-    this._rate = value;
+  set bitter(value: number) {
+    this._bitter = value;
+  }
+
+  get strong(): number {
+    return this._strong;
+  }
+
+  set strong(value: number) {
+    this._strong = value;
   }
 
   get decaf(): boolean {
