@@ -31,7 +31,7 @@ export class PopularResultComponent implements OnInit {
     console.log("Added to wishlist");
   }
 
-  addToCadt() {
+  addToCard() {
     console.log("Added to cart");
   }
 }

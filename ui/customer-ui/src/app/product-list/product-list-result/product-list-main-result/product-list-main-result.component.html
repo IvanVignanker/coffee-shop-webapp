@@ -1,14 +1,10 @@
 <div class="card-columns">
-  <div *ngFor="let product of products.products" class="card"
-       style="width: 250px; height: 450px">
-    <img src="../../../../assets/imagesProductList/Image_Peru_Product%20Listing.png"
-         class="card-img-top" style="height: 275px">
-    <div class="container" style="text-align: center; margin-top: 25px">
-      <a class="card-title" href="#/productDetails/1"
-         style="margin-top: 20px; text-decoration: none; color: black">{{this.product.title}}</a>
-      <h3 class="card-title" style="color: #e8b846">USD {{this.product.price}}</h3>
-      <button class="btn btn-dark" style="width: 200px; height: 30px; border-radius: 0;
-    color: white; font-size: 12px" (click)="addToCadt()">ADD TO CART</button>
+  <div *ngFor="let product of products.products | slice:1" class="card">
+    <img src="../../../../assets/imagesProductList/Image_Peru_Product%20Listing.png" class="card-img-top">
+    <div class="container">
+      <a class="card-title" routerLink="/productDetails/{{this.product.productId}}">{{this.product.title}}</a>
+      <h3 class="card-price">USD {{this.product.price}}</h3>
+      <button class="add-to-card btn btn-dark" (click)="addToCard()">ADD TO CART</button>
     </div>
   </div>
 </div>

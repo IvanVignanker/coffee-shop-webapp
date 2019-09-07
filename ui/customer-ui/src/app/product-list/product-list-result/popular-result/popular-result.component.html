@@ -1,99 +1,86 @@
 <div class="row">
-  <div class="card" style="width: 450px; height: 450px; margin: 15px 15px 15px 30px;">
-    <div class="container" style="margin-top: 15px">
-      <div class="row" style="text-align: left">
-        <div class="col-6">
-          <img style="width: 210px; height: 270px; margin-bottom: 10px"
-               src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png">
-          <a class="card-title" href="#/productDetails/1"
-             style="text-decoration: none; color: black">{{this.products.popular.title}}</a>
-          <p style="font-size: 10px; margin-top: 5px">{{this.products.popular.shortDescription}}</p>
+  <div class="popular-big-card card">
+    <div class="container">
+      <div class="popular-content-group row">
+        <div class="popular-big-left col-6">
+          <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png">
+          <a class="card-title" routerLink="/productDetails/{{this.products.popular.productId}}">
+            {{this.products.popular.title}}</a>
+          <p>{{this.products.popular.shortDescription}}</p>
         </div>
-        <div class="col-6" style="font-size: 15px; border-radius: 0; border: none; text-align: left">
-          <p style="text-transform: uppercase">Quantity</p>
+        <div class="popular-big-right col-6">
+          <p class="quantity-title">Quantity</p>
           <input type="number" min="1" step="1" value="1">
-          <p style="text-transform: uppercase; margin-top: 15px">Weight</p>
+          <p class="weight-title">Weight</p>
           <input type="number" min="1" step="1" value="1">
-          <div class="row" style="margin-top: 15px">
+          <div class="native-price row">
             <div class="col-6">
-              <p style="text-transform: uppercase">Price </p>
+              <p>Price </p>
             </div>
             <div class="col-6">
-              <i style="color: #e8b846">{{'USD ' + products.popular.price}}</i>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <p style="text-transform: uppercase">Total </p>
-            </div>
-            <div class="col-6">
-              <i style="color: #e8b846">{{'USD ' + products.popular.price*3}}</i>
+              <i>{{'USD ' + products.popular.price}}</i>
             </div>
           </div>
-          <div class="row">
+          <div class="total-price row">
             <div class="col-6">
-              <p  style="margin: 0">Strong</p>
+              <p>Total </p>
             </div>
             <div class="col-6">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
-<!--              https://www.flaticon.com/premium-icon/coffee-bean_1484412-->
+              <i>{{'USD ' + products.popular.price*3}}</i>
             </div>
           </div>
-          <div class="row">
-            <div class="col-6">
-              <p  style="margin: 0">Bitter</p>
+          <div class="beans">
+            <div class="strong-beans row">
+              <div class="col-6">
+                <p>Strong</p>
+              </div>
+              <div class="col-6">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <!--              https://www.flaticon.com/premium-icon/coffee-bean_1484412-->
+              </div>
             </div>
-            <div class="col-6">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
+            <div class="bitter-beans row">
+              <div class="col-6">
+                <p>Bitter</p>
+              </div>
+              <div class="col-6">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <p  style="margin: 0">Sour </p>
-            </div>
-            <div class="col-6">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
-              <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg"
-                   style="color: #e8b846; width: 15px; height: 15px; margin-right: 3px">
+            <div class="sour-beans row">
+              <div class="col-6">
+                <p>Sour </p>
+              </div>
+              <div class="col-6">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row" style="margin-top: 10px">
+      <div class="popular-button-group row">
         <div class="col-6">
-          <button class="btn btn-light" style="color: grey; border-color:grey;
-              width: 80%; height: 30px; border-radius: 0; font-size: 12px"
-              (click)="addToWishList()">ADD TO WISHLIST</button>
+          <button class="add-to-wishlist btn btn-light" (click)="addToWishList()">ADD TO WISHLIST</button>
         </div>
         <div class="col-6">
-          <button class="btn btn-dark" style="color: white;
-              width: 80%; height: 30px; border-radius: 0; font-size: 12px"
-              (click)="addToCadt()">ADD TO CART</button>
+          <button class="add-to-card btn btn-dark" (click)="addToCard()">ADD TO CART</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="card" style="width: 250px; height: 450px; margin-top: 15px; margin-left: 35px">
+  <div class="popular-small-card card">
     <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png"
-         class="card-img-top" style="height: 275px">
-    <div class="container" style="text-align: center; margin-top: 25px">
-      <a class="card-title" href="#/productDetails/1"
-         style="margin-top: 20px; text-decoration: none; color: black">CoffeeTitle#2</a>
-      <h3 class="card-title" style="color: #e8b846">USD 1000,00</h3>
-      <button class="btn btn-dark" style="width: 200px; height: 30px; border-radius: 0;
-          color: white; font-size: 12px"
-          (click)="addToCadt()">ADD TO CART</button>
+         class="card-img-top">
+    <div class="container">
+      <a class="card-title" routerLink="/productDetails/{{this.products.products[0].productId}}">
+        {{this.products.products[0].title}}</a>
+      <h3 class="card-title">USD {{this.products.products[0].price}}</h3>
+      <button class="btn btn-dark" (click)="addToCard()">ADD TO CART</button>
     </div>
   </div>
 </div>

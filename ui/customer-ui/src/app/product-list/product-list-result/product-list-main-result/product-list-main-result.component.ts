@@ -27,7 +27,7 @@ export class ProductListMainResultComponent implements OnInit {
     this.getProductList(this.defaultRequest);
   }
 
-  addToCadt() {
+  addToCard() {
     console.log("Added to cart");
   }
 }

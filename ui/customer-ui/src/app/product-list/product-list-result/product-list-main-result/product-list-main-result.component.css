@@ -5,3 +5,35 @@
   border: none;
   box-shadow: 5px 5px 5px 5px #e7e1e8;
 }
+
+.card-columns .card {
+  width: 250px;
+  height: 450px;
+}
+
+.card-columns .card img {
+  height: 275px;
+}
+
+.card-columns .card .container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.card-columns .card .container .card-title {
+  margin-top: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.card-columns .card .container .card-price {
+  color: #e8b846;
+}
+
+.card-columns .card .container .add-to-card {
+  width: 200px;
+  height: 30px;
+  border-radius: 0;
+  color: white;
+  font-size: 12px
+}
