@@ -4,40 +4,42 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>Quantity Available Kg</th>
-      <th>Images</th>
       <th>Description</th>
-      <th>Price</th>
+      <th>Short description</th>
+      <th>Images</th>
     </tr>
     </thead>
     <tbody>
-    <tr >
+    <tr>
       <td>{{this.productDetails?.productId}}</td>
       <td>{{this.productDetails?.productName}}</td>
-      <td>{{this.productDetails?.quantityAvailableKg}}</td>
-      <td>{{this.productDetails?.images}}</td>
       <td>{{this.productDetails?.description}}</td>
-      <td>{{this.productDetails?.unitPrice}}</td>
+      <td>{{this.productDetails?.shortDescription}}</td>
+      <td>{{this.productDetails?.images}}</td>
     </tr>
     </tbody>
   </table>
   <table class="table table-hover table-bordered">
     <thead class="alert-info">
     <tr>
+      <th>Preview image</th>
       <th>Bitter</th>
       <th>Sour</th>
       <th>Strong</th>
-      <th>Available Quantity</th>
-      <th>Is Available</th>
+      <th>Amount Available</th>
+      <th>Price</th>
     </tr>
     </thead>
     <tbody>
-    <tr >
+    <tr>
+      <img [src]="this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,'
+        + this.productDetails?.previewImage)" style="width: 50px; height: 50px">
+      <!--        insert here pipe instead all this text-->
       <td>{{this.productDetails?.characteristics.bitter}}</td>
       <td>{{this.productDetails?.characteristics.sour}}</td>
       <td>{{this.productDetails?.characteristics.strong}}</td>
-      <td>{{this.productDetails?.inStock.quantityAvailable}}</td>
-      <td>{{this.productDetails?.inStock.isAvailable}}</td>
+      <td>{{this.productDetails?.amountAvailable}}</td>
+      <td>{{this.productDetails?.price}}</td>
     </tr>
     </tbody>
   </table>

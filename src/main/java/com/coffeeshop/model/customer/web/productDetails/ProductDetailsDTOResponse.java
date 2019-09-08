@@ -13,16 +13,15 @@ public class ProductDetailsDTOResponse {
 
     private Long productId;
     private String productName;
-    private Integer quantityAvailableKg;
+    private String description;
+    private String shortDescription;
 
     @Singular
     private List<String> images;
+    private String previewImage;
 
     ProductCharacteristicsDTOResponse characteristics;
 
-    private String description;
-
-    InStockDTOResponse inStock;
-
-    private Double unitPrice;
+    private Integer amountAvailable;
+    private Double price;
 }

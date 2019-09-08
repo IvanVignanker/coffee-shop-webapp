@@ -2,7 +2,6 @@ package com.coffeeshop.converter.productCreationConverter.customer;
 
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productCoffee.ProductCoffee;
-import com.coffeeshop.model.customer.web.productDetails.InStockDTOResponse;
 import com.coffeeshop.model.customer.web.productDetails.ProductCharacteristicsDTOResponse;
 import com.coffeeshop.model.customer.web.productDetails.ProductDetailsDTOResponse;
 import org.springframework.stereotype.Component;
@@ -22,17 +21,17 @@ public class ProductDetailsResponseConverter {
         return ProductDetailsDTOResponse.builder()
                 .productId(product.getId())
                 .productName(product.getProductName())
-                .quantityAvailableKg(productItem)
+                .description(product.getDescription())
+                .shortDescription(product.getShortDescription())
                 .images((Collection<? extends String>) images.stream()
                         .map(image -> image.toString()).collect(Collectors.toList()))
+                .previewImage(product.getPreviewImage())
                 .characteristics(ProductCharacteristicsDTOResponse.builder()
                         .strong(productCoffee.getStrong())
                         .sour(productCoffee.getSour())
                         .bitter(productCoffee.getBitter()).build())
-                .description(product.getDescription()).inStock(
-                        InStockDTOResponse.builder()
-                                .isAvailable(product.getAvailable())
-                                .quantityAvailable(productQuantity).build())
-                .unitPrice(product.getUnitPrice()).build();
+                .amountAvailable(productQuantity)
+                .price(product.getUnitPrice())
+                .build();
     }
 }
