@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductListResponse} from "../../model/productListResponse";
-import {ProductListRequest} from "../../model/productListRequest";
-import {ProductListRoutingHttpService} from "../../http/product-list-routing-http.service";
-import {Product} from "../../model/product";
 
 @Component({
   selector: 'app-popular-result',
