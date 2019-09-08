@@ -1,28 +1,31 @@
 import {ProductCharacteristics} from "./characteristics";
-import {ProductInStock} from "./inStock";
 
 export class ProductDetails {
 
   private _productId: number;
   private _productName: string;
-  private _quantityAvailableKg: number;
-  private _images: string[]=[];
-  private _characteristics: ProductCharacteristics;
   private _description: string;
-  private _inStock: ProductInStock;
-  private _unitPrice: number;
+  private _shortDescription: string;
+  private _images: string[]=[];
+  private _previewImage: string;
+  private _characteristics: ProductCharacteristics;
+  private _amountAvailable: number;
+  private _price: number;
 
 
-  constructor(productId: number, productName: string, quantityAvailableKg: number, images: string[],
-              characteristics: ProductCharacteristics, description: string, inStock: ProductInStock, unitPrice: number) {
+  constructor(productId: number, productName: string, description: string,
+              shortDescription: string, images: string[],
+              characteristics: ProductCharacteristics, previewImage: string,
+              amountAvailable: number, price: number) {
     this._productId = productId;
     this._productName = productName;
-    this._quantityAvailableKg = quantityAvailableKg;
-    this._images = images;
-    this._characteristics = characteristics;
     this._description = description;
-    this._inStock = inStock;
-    this._unitPrice = unitPrice;
+    this._shortDescription = shortDescription;
+    this._images = images;
+    this._previewImage = previewImage;
+    this._characteristics = characteristics;
+    this._amountAvailable = amountAvailable;
+    this._price = price;
   }
 
   get productId(): number {
@@ -41,12 +44,20 @@ export class ProductDetails {
     this._productName = value;
   }
 
-  get quantityAvailableKg(): number {
-    return this._quantityAvailableKg;
+  get description(): string {
+    return this._description;
   }
 
-  set quantityAvailableKg(value: number) {
-    this._quantityAvailableKg = value;
+  set description(value: string) {
+    this._description = value;
+  }
+
+  get shortDescription(): string {
+    return this._shortDescription;
+  }
+
+  set shortDescription(value: string) {
+    this._shortDescription = value;
   }
 
   get images(): string[] {
@@ -57,6 +68,14 @@ export class ProductDetails {
     this._images = value;
   }
 
+  get previewImage(): string {
+    return this._previewImage;
+  }
+
+  set previewImage(value: string) {
+    this._previewImage = value;
+  }
+
   get characteristics(): ProductCharacteristics {
     return this._characteristics;
   }
@@ -65,27 +84,19 @@ export class ProductDetails {
     this._characteristics = value;
   }
 
-  get description(): string {
-    return this._description;
+  get amountAvailable(): number {
+    return this._amountAvailable;
   }
 
-  set description(value: string) {
-    this._description = value;
+  set amountAvailable(value: number) {
+    this._amountAvailable = value;
   }
 
-  get inStock(): ProductInStock {
-    return this._inStock;
+  get price(): number {
+    return this._price;
   }
 
-  set inStock(value: ProductInStock) {
-    this._inStock = value;
-  }
-
-  get unitPrice(): number {
-    return this._unitPrice;
-  }
-
-  set unitPrice(value: number) {
-    this._unitPrice = value;
+  set price(value: number) {
+    this._price = value;
   }
 }
