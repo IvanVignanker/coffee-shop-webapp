@@ -13,6 +13,8 @@ export class SearchFormComponent implements OnInit {
   searchForm: FormGroup;
 
   search: string;
+  priceMin: number;
+  priceMax: number;
   bitterMin: number;
   bitterMax: number;
   sourMin: number;
