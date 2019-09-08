@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {ProductListResponse} from "../model/productListResponse";
-import {ProductListRequest} from "../model/productListRequest";
-import {ProductListRoutingHttpService} from "../http/product-list-routing-http.service";
 
 @Component({
   selector: 'app-product-list-result',
@@ -10,18 +8,11 @@ import {ProductListRoutingHttpService} from "../http/product-list-routing-http.s
 })
 export class ProductListResultComponent implements OnInit {
 
-  public products: ProductListResponse;
-  private defaultRequest: ProductListRequest = ProductListRequest.prototype.getDefaultRequest();
+  @Input('products') products: ProductListResponse;
 
-  constructor(private listRoutingHttpService: ProductListRoutingHttpService) { }
-
-  getProductList(productListRequest: ProductListRequest) {
-    return this.listRoutingHttpService.getProducts(productListRequest).subscribe(data => {
-      this.products = data;
-    });
+  constructor() {
   }
 
   ngOnInit() {
-    this.getProductList(this.defaultRequest);
   }
 }

@@ -4,9 +4,9 @@
       <div class="popular-content-group row">
         <div class="popular-big-left col-6">
           <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png">
-          <a class="card-title" routerLink="/productDetails/{{this.products.popular.productId}}">
-            {{this.products.popular.title}}</a>
-          <p>{{this.products.popular.shortDescription}}</p>
+          <a class="card-title" routerLink="/productDetails/{{this.products?.popular.productId}}">
+            {{this.products?.popular.title}}</a>
+          <p>{{this.products?.popular.shortDescription}}</p>
         </div>
         <div class="popular-big-right col-6">
           <p class="quantity-title">Quantity</p>
@@ -18,7 +18,7 @@
               <p>Price </p>
             </div>
             <div class="col-6">
-              <i>{{'USD ' + products.popular.price}}</i>
+              <i>{{'USD ' + products?.popular.price}}</i>
             </div>
           </div>
           <div class="total-price row">
@@ -26,7 +26,7 @@
               <p>Total </p>
             </div>
             <div class="col-6">
-              <i>{{'USD ' + products.popular.price*3}}</i>
+              <i>{{'USD ' + products?.popular.price*3}}</i>
             </div>
           </div>
           <div class="beans">
@@ -77,9 +77,9 @@
     <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png"
          class="card-img-top">
     <div class="container">
-      <a class="card-title" routerLink="/productDetails/{{this.products.products[0].productId}}">
-        {{this.products.products[0].title}}</a>
-      <h3 class="card-title">USD {{this.products.products[0].price}}</h3>
+      <a class="card-title" routerLink="/productDetails/{{this.products?.products[0].productId}}">
+        {{this.products?.products[0].title}}</a>
+      <h3 class="card-title">USD {{this.products?.products[0].price}}</h3>
       <button class="btn btn-dark" (click)="addToCard()">ADD TO CART</button>
     </div>
   </div>

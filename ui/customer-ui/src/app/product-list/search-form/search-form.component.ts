@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Options } from "ng5-slider";
 
@@ -9,6 +9,7 @@ import { Options } from "ng5-slider";
 })
 export class SearchFormComponent implements OnInit {
 
+  @Output() requestSearchForm = new EventEmitter();
   searchForm: FormGroup;
 
   search: string;
@@ -45,6 +46,6 @@ export class SearchFormComponent implements OnInit {
 
   onSubmit() {
     const formValue = this.searchForm.value;
-    console.log(formValue);
+    this.requestSearchForm.emit(formValue);
   }
 }

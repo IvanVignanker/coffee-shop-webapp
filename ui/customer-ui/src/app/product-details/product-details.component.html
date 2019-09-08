@@ -12,12 +12,12 @@
     </thead>
     <tbody>
     <tr >
-      <td>{{this.productId}}</td>
-      <td>{{this.productDetails.productName}}</td>
-      <td>{{this.productDetails.quantityAvailableKg}}</td>
-      <td>{{this.productDetails.images}}</td>
-      <td>{{this.productDetails.description}}</td>
-      <td>{{this.productDetails.unitPrice}}</td>
+      <td>{{this.productDetails?.productId}}</td>
+      <td>{{this.productDetails?.productName}}</td>
+      <td>{{this.productDetails?.quantityAvailableKg}}</td>
+      <td>{{this.productDetails?.images}}</td>
+      <td>{{this.productDetails?.description}}</td>
+      <td>{{this.productDetails?.unitPrice}}</td>
     </tr>
     </tbody>
   </table>
@@ -33,12 +33,13 @@
     </thead>
     <tbody>
     <tr >
-      <td>{{this.productDetails.characteristics.bitter}}</td>
-      <td>{{this.productDetails.characteristics.sour}}</td>
-      <td>{{this.productDetails.characteristics.strong}}</td>
-      <td>{{this.productDetails.inStock.quantityAvailable}}</td>
-      <td>{{this.productDetails.inStock.isAvailable}}</td>
+      <td>{{this.productDetails?.characteristics.bitter}}</td>
+      <td>{{this.productDetails?.characteristics.sour}}</td>
+      <td>{{this.productDetails?.characteristics.strong}}</td>
+      <td>{{this.productDetails?.inStock.quantityAvailable}}</td>
+      <td>{{this.productDetails?.inStock.isAvailable}}</td>
     </tr>
     </tbody>
   </table>
 </div>
+<img src="../../assets/imagesProductDetails/Image_Product%20description.png" style="width: 100%">
