@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Options } from "ng5-slider";
+import {LocalStorageService} from "../services/localStorage/local-storage.service";
 
 @Component({
   selector: 'app-search-form',
@@ -13,39 +14,44 @@ export class SearchFormComponent implements OnInit {
   searchForm: FormGroup;
 
   search: string;
-  bitterMin: number;
-  bitterMax: number;
-  sourMin: number;
-  sourMax: number;
+  bitterFrom: number;
+  bitterTo: number;
+  sourFrom: number;
+  sourTo: number;
+  decaf: boolean;
+  ground: boolean;
   roasts: string;
   instant: boolean;
-  decoffeein: boolean;
-  ground: boolean;
 
   options: Options = {
     floor: 0,
     ceil: 250
   };
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
       sliderControl: new FormControl([0, 250]),
-      bitterMin: new FormControl(''),
-      bitterMax: new FormControl(''),
-      sourMin: new FormControl(''),
-      sourMax: new FormControl(''),
+      bitterFrom: new FormControl(''),
+      bitterTo: new FormControl(''),
+      sourFrom: new FormControl(''),
+      sourTo: new FormControl(''),
+      decaf: new FormControl(''),
+      ground: new FormControl(''),
       roasts: new FormControl(''),
       instant: new FormControl(''),
-      decoffeein: new FormControl(''),
-      ground: new FormControl(''),
     });
   }
 
   onSubmit() {
     const formValue = this.searchForm.value;
-    this.requestSearchForm.emit(formValue);
+    this.localStorageService.addSearchParams(formValue);
+    this.requestSearchForm.emit();
+  }
+
+  onReset() {
+    this.localStorageService.clearSearchParams();
   }
 }

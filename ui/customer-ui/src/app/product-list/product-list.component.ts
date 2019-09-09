@@ -1,7 +1,8 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {ProductListResponse} from "./model/productListResponse";
 import {ProductListRequest} from "./model/productListRequest";
-import {ProductListRoutingHttpService} from "./http/product-list-routing-http.service";
+import {ProductListRoutingHttpService} from "./services/http/product-list-routing-http.service";
+import {LocalStorageService} from "./services/localStorage/local-storage.service";
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +16,8 @@ export class ProductListComponent implements OnInit {
   public products: ProductListResponse;
   private defaultRequest: ProductListRequest = ProductListRequest.prototype.getDefaultRequest();
 
-  constructor(private listRoutingHttpService: ProductListRoutingHttpService) {}
+  constructor(private listRoutingHttpService: ProductListRoutingHttpService,
+  private localStorageService: LocalStorageService) {}
 
   ngOnInit() {
     this.getProductList(this.defaultRequest);
@@ -27,7 +29,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  submitSearchForm(json) {
-    console.log(json);
+  submitSearchForm() {
+    this.getProductList(JSON.parse(this.localStorageService.getSearchParams()));
   }
 }
