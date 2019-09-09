@@ -8,5 +8,13 @@ import lombok.*;
 @Getter
 @Builder
 public class PopularProductDTOResponse {
-    ProductDTOResponse productDTO;
+    private Long productId;
+    private String title;
+    private String shortDescription;
+    private String type;
+    private String previewImage;
+    private Double price;
+    private Integer availableAmount;
+
+    ProductsParametersDTOResponse productParameters;
 }

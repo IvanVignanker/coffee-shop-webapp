@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Builder
 public class ProductListDTOResponse {
-    PopularProductDTOResponse popularProductDTO;
+    PopularProductDTOResponse popular;
     @Singular
-    List<ProductDTOResponse> productDTOS;
+    List<ProductDTOResponse> products;
 }

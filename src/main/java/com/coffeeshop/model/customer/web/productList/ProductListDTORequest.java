@@ -23,5 +23,5 @@ public class ProductListDTORequest {
     @ApiModelProperty(example = "popular | price | name")
     private String sortBy;
 
-    ProductCharacteristicsDTORequest productCharacteristicsDTORequest;
+    ProductCharacteristicsDTORequest characteristics;
 }

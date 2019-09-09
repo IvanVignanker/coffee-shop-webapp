@@ -17,5 +17,5 @@ public class ProductDTOResponse {
     private Double price;
     private Integer availableAmount;
 
-    ProductsParametersDTOResponse productsParametersDTO;
+    ProductsParametersDTOResponse productParameters;
 }
