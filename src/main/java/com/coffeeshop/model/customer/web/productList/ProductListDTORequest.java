@@ -3,6 +3,8 @@ package com.coffeeshop.model.customer.web.productList;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import javax.validation.Valid;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter @Getter
@@ -23,5 +25,6 @@ public class ProductListDTORequest {
     @ApiModelProperty(example = "popular | price | name")
     private String sortBy;
 
+    @Valid
     ProductCharacteristicsDTORequest characteristics;
 }

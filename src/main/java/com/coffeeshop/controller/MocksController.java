@@ -21,7 +21,7 @@ public class MocksController {
     @PostMapping("/products")
     public ProductListDTOResponse getProductList(@RequestBody ProductListDTORequest productListDTORequest) {
         return ProductListDTOResponse.builder()
-                .popular(PopularProductDTOResponse.builder()
+                .popular(ProductDTOResponse.builder()
                         .productId(147852L)
                         .title("Third")
                         .shortDescription("Some third description")

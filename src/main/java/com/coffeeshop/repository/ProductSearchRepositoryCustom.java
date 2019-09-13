@@ -1,11 +1,8 @@
 package com.coffeeshop.repository;
 
 import com.coffeeshop.model.customer.web.productList.ProductListDTORequest;
-import org.springframework.validation.BindingResult;
-
-import javax.persistence.Query;
-import java.util.List;
+import com.coffeeshop.model.customer.web.productList.ProductListDTOResponse;
 
 public interface ProductSearchRepositoryCustom {
-    List<Query> searchProductByName(ProductListDTORequest productListDTORequest, BindingResult result);
+    ProductListDTOResponse searchProductByName(ProductListDTORequest productListDTORequest);
 }
