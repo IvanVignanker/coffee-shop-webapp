@@ -75,6 +75,7 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
         query.append("join ProductQuantity pq on p.id=pq.product.id ");
         query.append("where p.productName like :search ");
         query.append("and p.unitPrice between :priceMin and :priceMax ");
+        query.append("and p.available = true ");
         query.append("and pc.bitter between :bitterFrom and :bitterTo ");
         query.append("and pc.sour between :sourFrom and :sourTo ");
         query.append("and pc.strong between :strongFrom and :strongTo ");

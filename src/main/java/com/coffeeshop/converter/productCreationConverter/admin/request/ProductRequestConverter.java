@@ -15,6 +15,7 @@ public class ProductRequestConverter {
                 .previewImage(productCreationRequest.getPreviewImage())
                 .unitPrice(productCreationRequest.getUnitPrice())
                 .productCategoryId(productCreationRequest.getProductCategoryId())
+                .available(false)
                 .build();
     }
 }
