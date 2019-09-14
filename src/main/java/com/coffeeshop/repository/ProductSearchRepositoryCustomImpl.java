@@ -23,6 +23,9 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
             jpaQuery.setParameter(map.getKey(), map.getValue());
         }
         List<Object[]> responsesFromDB = jpaQuery.getResultList();
+        if (responsesFromDB.isEmpty()) {
+            return new ProductListDTOResponse();
+        }
         List<ProductDTOResponse> productDTOResponses = new ArrayList<>();
 
         for (Object[] list : responsesFromDB) {

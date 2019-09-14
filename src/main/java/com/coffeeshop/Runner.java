@@ -22,25 +22,33 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Runner implements CommandLineRunner {
 
     @Autowired
-    ProductCreationService productCreationService;
+    private ProductCreationService productCreationService;
 
     @Autowired
-    ProductItemService productItemService;
+    private ProductItemService productItemService;
 
     @Autowired
-    ProductImageRepository productImageRepository;
+    private ProductImageRepository productImageRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        for (int i = 1; i <= 200; i++) {
+        int lenght = 200;
+        for (int i = 1; i <= lenght; i++) {
             createProduct(i);
             createProductItem(i);
             for (int j = 3; j > 0; j--) {
                 createImages(i);
             }
+        }
+        makeAvailable(lenght);
+    }
+
+    public void makeAvailable(int lenght) {
+        for (int i = 1; i<=lenght/10; i++) {
+            productCreationService.makeAvailable((long) ThreadLocalRandom.current().nextInt(1, lenght));
         }
     }
 
