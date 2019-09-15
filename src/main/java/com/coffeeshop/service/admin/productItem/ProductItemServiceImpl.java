@@ -1,9 +1,12 @@
 package com.coffeeshop.service.admin.productItem;
 
+import com.coffeeshop.exception.OptimisticLockException;
+import com.coffeeshop.exception.OutOfStockException;
 import com.coffeeshop.exception.ProductNotFoundException;
 import com.coffeeshop.model.admin.request.ProductItemRequest;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;
+import com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus;
 import com.coffeeshop.model.customer.entity.product.productQuantity.ProductQuantity;
 import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.repository.product.ProductQuantityRepository;
@@ -15,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -73,10 +77,43 @@ public class ProductItemServiceImpl implements ProductItemService {
         }
     }
 
-    //no action required
     @Override
     @Transactional
-    public List<ProductItem> findAndMarkAsSold(Integer amount) {
-        return new ArrayList<>();
+    public List<ProductItem> findAndMarkAsSold(Map<Long, Integer> items) {
+        List<ProductItem> productItems = new ArrayList<>();
+        for (Map.Entry<Long, Integer> map : items.entrySet()) {
+            productItems.addAll(productItemService.
+                    findAndMarkAsSoldChild(map.getKey(), map.getValue()));
+        }
+        return productItems;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = OutOfStockException.class)
+    public List<ProductItem> findAndMarkAsSoldChild(Long productId, Integer quantity) {
+        ProductItem item = null;
+        List<ProductItem> items = new ArrayList<>();
+        try {
+            Product product = productRepository.findById(productId)
+                    .orElseThrow(ProductNotFoundException::new);
+
+            items = productItemRepository
+                    .findAllByProductIdAndStatus(product.getId(), ProductStatus.AVAILABLE);
+            for (int i = 0; i < quantity; i++) {
+                items.get(i).setStatus(ProductStatus.SOLD);
+            }
+            removeQuantity(productId, quantity);
+        } catch (OptimisticLockException opt) {
+            opt.httpStatus();
+        }
+        return items;
+    }
+
+    public void removeQuantity(Long productId, Integer quantity) {
+        if (quantity > 0) {
+                ProductQuantity productQuantity = productQuantityRepository
+                        .findByProductId(productId).orElseThrow(ProductNotFoundException::new);
+                productQuantity.setQuantity(productQuantity.getQuantity()-quantity);
+        }
     }
 }

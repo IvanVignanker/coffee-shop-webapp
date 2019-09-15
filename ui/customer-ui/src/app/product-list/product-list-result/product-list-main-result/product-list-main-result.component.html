@@ -2,7 +2,7 @@
   <div *ngFor="let product of products?.products | slice:1" class="card">
     <img src="../../../../assets/imagesProductList/Image_Peru_Product%20Listing.png" class="card-img-top">
     <div class="container">
-      <a class="card-title" routerLink="/productDetails/{{this.product?.productId}}">{{this.product.title}}</a>
+      <a class="card-title" routerLink="/productDetails/{{this.product?.productId}}">{{this.product?.title}}</a>
       <h3 class="card-price">USD {{this.product?.price}}</h3>
       <button class="add-to-card btn btn-dark" (click)="addToCard()">ADD TO CART</button>
     </div>

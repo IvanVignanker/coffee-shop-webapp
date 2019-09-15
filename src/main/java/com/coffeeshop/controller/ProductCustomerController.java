@@ -23,7 +23,7 @@ public class ProductCustomerController {
     @Autowired
     private ProductSearchRepositoryCustom productSearchRepository;
 
-    @PostMapping("/customer/search")
+    @PostMapping("/products")
     public ProductListDTOResponse searchProductsByName(@RequestBody @Valid ProductListDTORequest productListDTORequest,
                                                        BindingResult result) {
         if (result.hasErrors()) {

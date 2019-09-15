@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 @RequestMapping("/api")
 public class MocksController {
 
-    @PostMapping("/products")
+    @PostMapping("/products/mock")
     public ProductListDTOResponse getProductList(@RequestBody ProductListDTORequest productListDTORequest) {
         return ProductListDTOResponse.builder()
                 .popular(ProductDTOResponse.builder()

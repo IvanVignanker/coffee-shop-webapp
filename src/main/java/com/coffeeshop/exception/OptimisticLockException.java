@@ -3,14 +3,14 @@ package com.coffeeshop.exception;
 import com.coffeeshop.model.customer.web.error.ErrorResponse;
 import org.springframework.http.HttpStatus;
 
-public class ProductNotFoundException extends BaseException {
+public class OptimisticLockException extends BaseException {
 
-    private static final String DEFAULT_MESSAGE = "Product doesn't exist by this id.";
+    private static final String DEFAULT_MESSAGE = "ASK ED WHAT DOES IT MEAN :)";
     private static final HttpStatus BAD_REQUEST = HttpStatus.BAD_REQUEST;
 
-    public ProductNotFoundException() { }
+    public OptimisticLockException() {}
 
-    public ProductNotFoundException(String message) {
+    public OptimisticLockException(String message) {
         super(message);
     }
 

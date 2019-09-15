@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/admin/product")
@@ -43,11 +44,6 @@ public class ProductCreationManagementController {
         return productItemRepository.findAll();
     }
 
-    @PutMapping("/findAndMark/{amount}")
-    public List<ProductItem> findAndMarkAsSold(@PathVariable("amount") Integer amount) {
-        return productItemService.findAndMarkAsSold(amount);
-    }
-
     @PostMapping("/addProduct")
     public ProductCreationResponse createProduct(
             @RequestBody @Valid ProductRequest productRequest, BindingResult result) throws IOException {
@@ -65,5 +61,10 @@ public class ProductCreationManagementController {
     @PostMapping("/makeUnavailable/{id}")
     public ProductMainCreationResponse makeUnavailable(@PathVariable("id") Long id) {
         return productCreationService.makeUnavailable(id);
+    }
+
+    @PostMapping("/findAndMark")
+    public List<ProductItem> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {
+        return productItemService.findAndMarkAsSold(items);
     }
 }
