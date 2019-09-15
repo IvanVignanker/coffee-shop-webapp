@@ -6,6 +6,8 @@ import com.coffeeshop.model.customer.web.productList.ProductListDTORequest;
 import com.coffeeshop.model.customer.web.productList.ProductListDTOResponse;
 import com.coffeeshop.repository.ProductSearchRepositoryCustom;
 import com.coffeeshop.service.customer.ProductSearchService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,13 @@ public class ProductCustomerController {
     private ProductSearchRepositoryCustom productSearchRepository;
 
     @PostMapping("/products")
-    public ProductListDTOResponse searchProductsByName(@RequestBody @Valid ProductListDTORequest productListDTORequest,
+    public ProductListDTOResponse searchProductsByName(
+            @RequestBody @Valid ProductListDTORequest productListDTORequest,
                                                        BindingResult result) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(productListDTORequest);
+        System.out.println(json);
+
         if (result.hasErrors()) {
             throw new InputValidationException(result);
         }

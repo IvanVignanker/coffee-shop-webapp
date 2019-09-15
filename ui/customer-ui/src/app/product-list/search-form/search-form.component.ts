@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Options } from "ng5-slider";
+import {LabelType, Options} from "ng5-slider";
 import {LocalStorageService} from "../services/localStorage/local-storage.service";
+import {ProductListRequest} from "../model/productListRequest";
+import {Characteristics} from "../model/characteristics";
 
 @Component({
   selector: 'app-search-form',
@@ -11,43 +12,51 @@ import {LocalStorageService} from "../services/localStorage/local-storage.servic
 export class SearchFormComponent implements OnInit {
 
   @Output() requestSearchForm = new EventEmitter();
-  searchForm: FormGroup;
 
-  search: string;
-  bitterFrom: number;
-  bitterTo: number;
-  sourFrom: number;
-  sourTo: number;
-  decaf: boolean;
-  ground: boolean;
-  roasts: string;
-  instant: boolean;
+  search: string = "";
+  priceMin: number = 0;
+  priceMax: number = 250;
+  bitterFrom: number = 1;
+  bitterTo: number = 5;
+  sourFrom: number = 1;
+  sourTo: number = 5;
+  strongFrom: number = 1;
+  strongTo: number = 5;
+  decaf: boolean = false;
+  ground: boolean = false;
 
   options: Options = {
     floor: 0,
-    ceil: 250
+    ceil: 250,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '$' + value;
+        case LabelType.High:
+          return '$' + value;
+        default:
+          return '$' + value;
+      }
+    }
   };
 
   constructor(private localStorageService: LocalStorageService) { }
 
+  getRequest() :ProductListRequest {
+    return new ProductListRequest(1, 10, this.search,
+      this.priceMin, this.priceMax, 'popular',
+      new Characteristics(this.bitterFrom, this.bitterTo,
+        this.sourFrom, this.sourTo, this.strongFrom, this.strongTo,
+        this.decaf, this.ground, 'arabica'));
+  }
+
   ngOnInit() {
-    this.searchForm = new FormGroup({
-      search: new FormControl(''),
-      sliderControl: new FormControl([0, 250]),
-      bitterFrom: new FormControl(''),
-      bitterTo: new FormControl(''),
-      sourFrom: new FormControl(''),
-      sourTo: new FormControl(''),
-      decaf: new FormControl(''),
-      ground: new FormControl(''),
-      roasts: new FormControl(''),
-      instant: new FormControl(''),
-    });
+    this.getRequest();
   }
 
   onSubmit() {
-    const formValue = this.searchForm.value;
-    this.localStorageService.addSearchParams(formValue);
+    console.log(this.getRequest());
+    this.localStorageService.addSearchParams(this.getRequest());
     this.requestSearchForm.emit();
   }
 

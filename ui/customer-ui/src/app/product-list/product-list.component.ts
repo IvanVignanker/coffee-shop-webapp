@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit {
   private localStorageService: LocalStorageService) {}
 
   ngOnInit() {
+    console.log(this.defaultRequest);
     this.getProductList(this.defaultRequest);
   }
 

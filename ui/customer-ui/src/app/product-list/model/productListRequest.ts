@@ -80,9 +80,9 @@ export class ProductListRequest {
   }
 
   getDefaultRequest() :ProductListRequest {
-    return new ProductListRequest(1, 10, 'go home',
-      100, 200, 'popular',
-      new Characteristics(1, 2, 1, 2, 1, 2,
-        true, true, 'arabica'));
+    return new ProductListRequest(1, 10, '',
+      0, 250, 'popular',
+      new Characteristics(1, 5, 1, 5, 1, 5,
+        false, true, 'arabica'));
   }
 }
