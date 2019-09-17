@@ -63,8 +63,9 @@ public class ProductCreationManagementController {
         return productCreationService.makeUnavailable(id);
     }
 
-    @PostMapping("/findAndMark")
-    public List<ProductItem> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {
-        return productItemService.findAndMarkAsSold(items);
+    //no action required
+    @PutMapping("/findAndMark/{amount}")
+    public List<ProductItem> findAndMarkAsSold(@PathVariable("amount") Integer amount) {
+        return productItemService.findAndMarkAsSold(amount);
     }
 }

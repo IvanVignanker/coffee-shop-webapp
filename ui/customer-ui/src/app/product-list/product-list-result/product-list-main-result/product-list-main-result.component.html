@@ -1,5 +1,5 @@
 <div class="card-columns">
-  <div *ngFor="let product of products?.products | slice:1" class="card">
+  <div *ngFor="let product of products?.products | slice:2" class="card">
     <img src="../../../../assets/imagesProductList/Image_Peru_Product%20Listing.png" class="card-img-top">
     <div class="container">
       <a class="card-title" routerLink="/productDetails/{{this.product?.productId}}">{{this.product?.title}}</a>

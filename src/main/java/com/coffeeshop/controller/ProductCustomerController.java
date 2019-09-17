@@ -4,7 +4,7 @@ import com.coffeeshop.exception.InputValidationException;
 import com.coffeeshop.model.customer.web.productDetails.ProductDetailsDTOResponse;
 import com.coffeeshop.model.customer.web.productList.ProductListDTORequest;
 import com.coffeeshop.model.customer.web.productList.ProductListDTOResponse;
-import com.coffeeshop.repository.ProductSearchRepositoryCustom;
+import com.coffeeshop.repository.custom.ProductSearchRepositoryCustom;
 import com.coffeeshop.service.customer.ProductSearchService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,10 +29,6 @@ public class ProductCustomerController {
     public ProductListDTOResponse searchProductsByName(
             @RequestBody @Valid ProductListDTORequest productListDTORequest,
                                                        BindingResult result) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(productListDTORequest);
-        System.out.println(json);
-
         if (result.hasErrors()) {
             throw new InputValidationException(result);
         }

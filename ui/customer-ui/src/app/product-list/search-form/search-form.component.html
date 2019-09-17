@@ -2,13 +2,10 @@
 
   <div class="font-weight-bold"><h4>Coffee</h4></div>
 
-  <input [(ngModel)]="search" name="name" type="text" class="form-control"
-         placeholder="search"><br>
+  <input [(ngModel)]="searchModel" type="text" value="" name="search" class="form-control" placeholder="search"><br>
 
   <div class="font-weight-bold"><h4>Price</h4></div>
-  <ng5-slider class="range-slider" [(value)]="priceMin"
-              [(highValue)]="priceMax"
-              [options]="options"></ng5-slider>
+  <ng5-slider class="range-slider" [options]="options" [(value)]="priceMinModel" [(highValue)]="priceMaxModel"></ng5-slider>
 
   <div class="font-weight-bold"><h4>Category</h4></div>
 
@@ -16,39 +13,37 @@
     <div class="card">
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse"
-                  data-target="#collapseOne" aria-expanded="true"
-                  aria-controls="collapseOne">Bitter</button>
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">Bitter</button>
         </h5>
       </div>
-      <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-           data-parent="#accordionExample">
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="bitterFrom"
+              <input [(ngModel)]="bitterFromModel"
                      type="radio" class="form-radio" value="1" name="bitterFrom1"> 1
-              <input [(ngModel)]="bitterFrom"
+              <input [(ngModel)]="bitterFromModel"
                      type="radio" class="form-radio" value="2" name="bitterFrom2"> 2
-              <input [(ngModel)]="bitterFrom"
+              <input [(ngModel)]="bitterFromModel"
                      type="radio" class="form-radio" value="3" name="bitterFrom3"> 3
-              <input [(ngModel)]="bitterFrom"
+              <input [(ngModel)]="bitterFromModel"
                      type="radio" class="form-radio" value="4" name="bitterFrom4"> 4
-              <input [(ngModel)]="bitterFrom"
+              <input [(ngModel)]="bitterFromModel"
                      type="radio" class="form-radio" value="5" name="bitterFrom5"> 5
             </div>
           </div>
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="bitterTo"
+              <input [(ngModel)]="bitterToModel"
                      type="radio" class="form-radio" value="1" name="bitterTo1"> 1
-              <input [(ngModel)]="bitterTo"
+              <input [(ngModel)]="bitterToModel"
                      type="radio" class="form-radio" value="2" name="bitterTo2"> 2
-              <input [(ngModel)]="bitterTo"
+              <input [(ngModel)]="bitterToModel"
                      type="radio" class="form-radio" value="3" name="bitterTo3"> 3
-              <input [(ngModel)]="bitterTo"
+              <input [(ngModel)]="bitterToModel"
                      type="radio" class="form-radio" value="4" name="bitterTo4"> 4
-              <input [(ngModel)]="bitterTo"
+              <input [(ngModel)]="bitterToModel"
                      type="radio" class="form-radio" value="5" name="bitterTo5"> 5
             </div>
           </div>
@@ -59,39 +54,37 @@
     <div class="card">
       <div class="card-header" id="headingTwo">
         <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse"
-                  data-target="#collapseTwo" aria-expanded="true"
-                  aria-controls="collapseTwo">Sour</button>
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="true" aria-controls="collapseTwo">Sour</button>
         </h5>
       </div>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-           data-parent="#accordionExample">
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="sourFrom"
+              <input [(ngModel)]="sourFromModel"
                      type="radio" class="form-radio" value="1" name="sourFrom1"> 1
-              <input [(ngModel)]="sourFrom"
+              <input [(ngModel)]="sourFromModel"
                      type="radio" class="form-radio" value="2" name="sourFrom2"> 2
-              <input [(ngModel)]="sourFrom"
+              <input [(ngModel)]="sourFromModel"
                      type="radio" class="form-radio" value="3" name="sourFrom3"> 3
-              <input [(ngModel)]="sourFrom"
+              <input [(ngModel)]="sourFromModel"
                      type="radio" class="form-radio" value="4" name="sourFrom4"> 4
-              <input [(ngModel)]="sourFrom"
+              <input [(ngModel)]="sourFromModel"
                      type="radio" class="form-radio" value="5" name="sourFrom5"> 5
             </div>
           </div>
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="sourTo"
+              <input [(ngModel)]="sourToModel"
                      type="radio" class="form-radio" value="1" name="sourTo1"> 1
-              <input [(ngModel)]="sourTo"
+              <input [(ngModel)]="sourToModel"
                      type="radio" class="form-radio" value="2" name="sourTo2"> 2
-              <input [(ngModel)]="sourTo"
+              <input [(ngModel)]="sourToModel"
                      type="radio" class="form-radio" value="3" name="sourTo3"> 3
-              <input [(ngModel)]="sourTo"
+              <input [(ngModel)]="sourToModel"
                      type="radio" class="form-radio" value="4" name="sourTo4"> 4
-              <input [(ngModel)]="sourTo"
+              <input [(ngModel)]="sourToModel"
                      type="radio" class="form-radio" value="5" name="sourTo5"> 5
             </div>
           </div>
@@ -102,39 +95,37 @@
     <div class="card">
       <div class="card-header" id="headingTwoTwo">
         <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse"
-                  data-target="#collapseTwoTwo" aria-expanded="true"
-                  aria-controls="collapseTwoTwo">Sour</button>
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwoTwo"
+                  aria-expanded="true" aria-controls="collapseTwo">Strong</button>
         </h5>
       </div>
-      <div id="collapseTwoTwo" class="collapse" aria-labelledby="headingTwoTwo"
-           data-parent="#accordionExample">
+      <div id="collapseTwoTwo" class="collapse" aria-labelledby="headingTwoTwo" data-parent="#accordionExample">
         <div class="card-body">
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="strongFrom"
+              <input [(ngModel)]="strongFromModel"
                      type="radio" class="form-radio" value="1" name="strongFrom1"> 1
-              <input [(ngModel)]="strongFrom"
+              <input [(ngModel)]="strongFromModel"
                      type="radio" class="form-radio" value="2" name="strongFrom2"> 2
-              <input [(ngModel)]="strongFrom"
+              <input [(ngModel)]="strongFromModel"
                      type="radio" class="form-radio" value="3" name="strongFrom3"> 3
-              <input [(ngModel)]="strongFrom"
+              <input [(ngModel)]="strongFromModel"
                      type="radio" class="form-radio" value="4" name="strongFrom4"> 4
-              <input [(ngModel)]="strongFrom"
+              <input [(ngModel)]="strongFromModel"
                      type="radio" class="form-radio" value="5" name="strongFrom5"> 5
             </div>
           </div>
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="strongTo"
+              <input [(ngModel)]="strongToModel"
                      type="radio" class="form-radio" value="1" name="strongTo1"> 1
-              <input [(ngModel)]="strongTo"
+              <input [(ngModel)]="strongToModel"
                      type="radio" class="form-radio" value="2" name="strongTo2"> 2
-              <input [(ngModel)]="strongTo"
+              <input [(ngModel)]="strongToModel"
                      type="radio" class="form-radio" value="3" name="strongTo3"> 3
-              <input [(ngModel)]="strongTo"
+              <input [(ngModel)]="strongToModel"
                      type="radio" class="form-radio" value="4" name="strongTo4"> 4
-              <input [(ngModel)]="strongTo"
+              <input [(ngModel)]="strongToModel"
                      type="radio" class="form-radio" value="5" name="strongTo5"> 5
             </div>
           </div>
@@ -145,19 +136,17 @@
     <div class="card">
       <div class="card-header" id="headingSix">
         <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse"
-                  data-target="#collapseSix" aria-expanded="true"
-                  aria-controls="collapseSix">Decoffeein</button>
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix"
+                  aria-expanded="true" aria-controls="collapseSix">Decoffeein</button>
         </h5>
       </div>
-      <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
-           data-parent="#accordionExample">
+      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
         <div class="card-body">
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="decaf"
+              <input [(ngModel)]="decafModel"
                      type="radio" class="form-radio" value="yes" name="decafYes"> Yes
-              <input [(ngModel)]="decaf"
+              <input [(ngModel)]="decafModel"
                      type="radio" class="form-radio" value="no" name="decafNo"> No
             </div>
           </div>
@@ -168,19 +157,17 @@
     <div class="card">
       <div class="card-header" id="headingFive">
         <h5 class="mb-0">
-          <button class="btn btn-link" type="button" data-toggle="collapse"
-                  data-target="#collapseFive" aria-expanded="true"
-                  aria-controls="collapseFive">Ground</button>
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive"
+                  aria-expanded="true" aria-controls="collapseFive">Ground</button>
         </h5>
       </div>
-      <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-           data-parent="#accordionExample">
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
         <div class="card-body">
           <div class="content">
             <div role="dropdown-content">
-              <input [(ngModel)]="ground"
+              <input [(ngModel)]="groundModel"
                      type="radio" class="form-radio" value="yes" name="groundYes"> Yes
-              <input [(ngModel)]="ground"
+              <input [(ngModel)]="groundModel"
                      type="radio" class="form-radio" value="no" name="groundNo"> No
             </div>
           </div>
@@ -190,8 +177,8 @@
 
     <div class="font-weight-bold my-4 text-center">
       <button type="submit" class="btn btn-outline-info button-reset">APPLY</button><br>
-      <button type="reset" class="btn btn-outline-secondary button-reset"
-              (click)="onReset()">RESET</button>
+      <button type="reset" class="btn btn-outline-secondary button-reset" (click)="onReset()">RESET</button>
     </div>
+
   </div>
 </form>

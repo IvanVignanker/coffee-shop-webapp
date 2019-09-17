@@ -1,0 +1,19 @@
+{
+  "page": 1,
+  "results": 10,
+  "search": "Coffee title",
+  "priceMin" : 112.11,
+  "priceMax" : 200.11,
+  "sortBy" : "popular | price | name",
+  "characteristics" : {
+    "bitterFrom" : 1,
+    "bitterTo" : 5,
+    "sourFrom" : 1,
+    "sourTo" : 5,
+    "strongFrom": 1,
+    "strongTo": 5,
+    "decaf" : true,
+    "ground" : false,
+    "coffeeType" : "arabica"
+  }
+}
