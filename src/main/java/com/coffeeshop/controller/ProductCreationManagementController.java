@@ -62,10 +62,4 @@ public class ProductCreationManagementController {
     public ProductMainCreationResponse makeUnavailable(@PathVariable("id") Long id) {
         return productCreationService.makeUnavailable(id);
     }
-
-    //no action required
-    @PutMapping("/findAndMark/{amount}")
-    public List<ProductItem> findAndMarkAsSold(@PathVariable("amount") Integer amount) {
-        return productItemService.findAndMarkAsSold(amount);
-    }
 }

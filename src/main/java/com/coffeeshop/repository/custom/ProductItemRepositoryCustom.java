@@ -7,7 +7,7 @@ import com.coffeeshop.model.customer.entity.product.productItem.status.ProductSt
 import java.util.List;
 
 public interface ProductItemRepositoryCustom {
-    List<ProductItem> findProductItemByProductAndProductStatusLimitIs(Product product,
-                                                                      ProductStatus status,
-                                                                      int limit);
+    List<ProductItem>  findProductItemByProductAndProductStatusLimitIs(Product product,
+                                                                       ProductStatus status,
+                                                                       int limit);
 }

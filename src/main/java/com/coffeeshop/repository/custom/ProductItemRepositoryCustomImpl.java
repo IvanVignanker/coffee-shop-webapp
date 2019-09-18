@@ -21,9 +21,7 @@ public class ProductItemRepositoryCustomImpl implements ProductItemRepositoryCus
     EntityManager entityManager;
 
     @Override
-    public List<ProductItem> findProductItemByProductAndProductStatusLimitIs(Product product,
-                                                                             ProductStatus status,
-                                                                             int limit) {
+    public List<ProductItem> findProductItemByProductAndProductStatusLimitIs(Product product, ProductStatus status, int limit) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<ProductItem> criteriaQuery = criteriaBuilder.createQuery(ProductItem.class);
         Root<ProductItem> itemRoot = criteriaQuery.from(ProductItem.class);

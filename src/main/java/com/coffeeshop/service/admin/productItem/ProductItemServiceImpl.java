@@ -1,23 +1,17 @@
 package com.coffeeshop.service.admin.productItem;
 
 import com.coffeeshop.exception.ProductException;
-import com.coffeeshop.exception.ProductExceptionType;
 import com.coffeeshop.exception.ProductNotFoundException;
 import com.coffeeshop.model.admin.request.ProductItemRequest;
 import com.coffeeshop.model.admin.response.ProductItemResponse;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;
-import com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus;
 import com.coffeeshop.model.customer.entity.product.productQuantity.ProductQuantity;
 import com.coffeeshop.repository.custom.ProductItemRepositoryCustom;
-import com.coffeeshop.repository.custom.ProductItemRepositoryCustomImpl;
 import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.repository.product.ProductQuantityRepository;
 import com.coffeeshop.repository.product.ProductRepository;
-import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.retry.annotation.Backoff;
-import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +22,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.coffeeshop.exception.ProductExceptionType.*;
 import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.AVAILABLE;
 import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.SOLD;
 
@@ -48,11 +41,11 @@ public class ProductItemServiceImpl implements ProductItemService {
     private ProductQuantityRepository productQuantityRepository;
 
     @Autowired
-    private ProductItemRepositoryCustomImpl productItemRepositoryCustom;
+    private ProductItemRepositoryCustom productItemRepositoryCustom;
 
     @Override
     public void createProductItems(List<ProductItemRequest> productMainRequests) {
-        for (ProductItemRequest productItemRequest: productMainRequests) {
+        for (ProductItemRequest productItemRequest : productMainRequests) {
             productItemService.createProductItem(productItemRequest);
         }
     }
@@ -86,7 +79,7 @@ public class ProductItemServiceImpl implements ProductItemService {
             } else {
                 ProductQuantity productQuantity = productQuantityRepository.findByProductId(productMainRequest.getProductId())
                         .orElseThrow(ProductNotFoundException::new);
-                productQuantity.setQuantity(productQuantity.getQuantity()+productMainRequest.getWeightKG());
+                productQuantity.setQuantity(productQuantity.getQuantity() + productMainRequest.getWeightKG());
             }
         }
     }
@@ -94,49 +87,40 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Override
     @Transactional
     public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) {
-        List<ProductItem> productItems = new ArrayList<>();
+        List<ProductItem> markedAsSoldItems = new ArrayList<>();
         for (Map.Entry<Long, Integer> map : items.entrySet()) {
-            Product product = productRepository.findProductByIdAndAvailableIsTrue(map.getKey())
-            .orElseThrow(() -> new ProductException(map.getKey(), PRODUCT_NOT_AVAILABLE));
-            List<ProductItem> markAsSoldList = productItemService.findAndMarkAsSoldChild(map.getKey(), map.getValue());
-            if (markAsSoldList.isEmpty()) throw new ProductException(map.getKey(), OUT_OF_STOCK);
-            productItems.addAll(markAsSoldList);
+            List<ProductItem> checkingProductItemsLengths = new ArrayList<>();
+            Product product = productRepository.findById(map.getKey())
+                    .orElseThrow(ProductNotFoundException::new);
+            checkingProductItemsLengths.addAll(productItemRepository
+                    .findAllByProductIdAndStatus(map.getKey(), AVAILABLE));
+            if (!checkingProductItemsLengths.isEmpty() && checkingProductItemsLengths.size() >= map.getValue()) {
+                productItemService.findAndMarkAsSold(product, map.getValue());
+            }
         }
-        return productItems.stream().map(productItem ->
-                ProductItemResponse.builder()
-                        .id(productItem.getId())
-                        .productId(productItem.getProduct().getId())
-                        .status(productItem.getStatus())
-                        .weightKG(productItem.getWeightKG())
-                        .build()).collect(Collectors.toList());
+        markedAsSoldItems.addAll(productItemRepository.findAllByStatus(SOLD));
+        return markedAsSoldItems.stream().map(item -> ProductItemResponse.builder()
+                .productId(item.getProduct().getId())
+                .id(item.getId())
+                .status(item.getStatus())
+                .build()).collect(Collectors.toList());
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = ProductException.class)
-    public List<ProductItem> findAndMarkAsSoldChild(Long productId, Integer quantity) throws ProductException {
-        List<ProductItem> items = new ArrayList<>();
+    public List<ProductItem> findAndMarkAsSold(Product product, Integer amount) throws ProductException {
+        List<ProductItem> markedAsSoldItems = new ArrayList<>();
+        markedAsSoldItems.addAll(productItemRepositoryCustom
+                .findProductItemByProductAndProductStatusLimitIs(product, AVAILABLE, amount));
         try {
-            Product product = productRepository.findById(productId)
-                    .orElseThrow(ProductNotFoundException::new);
-            items = productItemRepositoryCustom
-                    .findProductItemByProductAndProductStatusLimitIs(product, AVAILABLE, quantity);
-            if (items.size() < 0) {
-                throw new ProductException(productId, ILLEGAL_QUANTITY);
+            for (int i = 0; i < amount; i++) {
+                markedAsSoldItems.get(i).setStatus(SOLD);
+                markedAsSoldItems.add(markedAsSoldItems.get(i));
             }
-            for (ProductItem productItem: items) {
-                productItem.setStatus(SOLD);
-            }
-            productItemRepository.saveAll(items);
+            productItemRepository.saveAll(markedAsSoldItems);
         } catch (ProductException e) {
             e.httpStatus();
         }
-        return items.size() == quantity ? items : new ArrayList<>();
-    }
-
-    //no action required
-    @Override
-    @Transactional
-    public List<ProductItem> findAndMarkAsSold(Integer amount) {
-        return new ArrayList<>();
+        return markedAsSoldItems;
     }
 }

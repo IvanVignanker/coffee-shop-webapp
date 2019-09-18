@@ -6,8 +6,6 @@ import com.coffeeshop.model.customer.web.productList.ProductListDTORequest;
 import com.coffeeshop.model.customer.web.productList.ProductListDTOResponse;
 import com.coffeeshop.repository.custom.ProductSearchRepositoryCustom;
 import com.coffeeshop.service.customer.ProductSearchService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;

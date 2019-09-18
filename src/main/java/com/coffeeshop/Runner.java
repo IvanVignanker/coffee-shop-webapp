@@ -35,7 +35,7 @@ public class Runner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        int lenght = 200;
+        int lenght = 10;
         for (int i = 1; i <= lenght; i++) {
             createProduct(i);
             createProductItem(i);

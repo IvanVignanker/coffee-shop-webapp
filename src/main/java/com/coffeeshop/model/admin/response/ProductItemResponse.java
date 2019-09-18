@@ -10,8 +10,7 @@ import lombok.*;
 @Builder
 public class ProductItemResponse {
 
-    private Long id;
     private Long productId;
-    private Integer weightKG;
+    private Long id;
     private ProductStatus status;
 }
