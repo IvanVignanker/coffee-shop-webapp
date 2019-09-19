@@ -6,12 +6,15 @@ import com.coffeeshop.model.admin.request.ProductItemRequest;
 import com.coffeeshop.model.admin.response.ProductItemResponse;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;
+import com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus;
 import com.coffeeshop.model.customer.entity.product.productQuantity.ProductQuantity;
-import com.coffeeshop.repository.custom.ProductItemRepositoryCustom;
 import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.repository.product.ProductQuantityRepository;
 import com.coffeeshop.repository.product.ProductRepository;
+import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +25,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.coffeeshop.exception.ProductExceptionType.ILLEGAL_QUANTITY;
+import static com.coffeeshop.exception.ProductExceptionType.OUT_OF_STOCK;
 import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.AVAILABLE;
-import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.SOLD;
 
 @Service
+@Transactional
 public class ProductItemServiceImpl implements ProductItemService {
 
     @Autowired
@@ -39,9 +44,6 @@ public class ProductItemServiceImpl implements ProductItemService {
 
     @Autowired
     private ProductQuantityRepository productQuantityRepository;
-
-    @Autowired
-    private ProductItemRepositoryCustom productItemRepositoryCustom;
 
     @Override
     public void createProductItems(List<ProductItemRequest> productMainRequests) {
@@ -85,20 +87,18 @@ public class ProductItemServiceImpl implements ProductItemService {
     }
 
     @Override
-    @Transactional
+    @Retryable(value = StaleObjectStateException.class, maxAttempts = 3,
+            exclude = ProductException.class, backoff = @Backoff(delay = 1500))
     public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
         for (Map.Entry<Long, Integer> map : items.entrySet()) {
-            List<ProductItem> checkingProductItemsLengths = new ArrayList<>();
-            Product product = productRepository.findById(map.getKey())
+            Product product = productRepository.findByIdAndAvailable(map.getKey(), true)
                     .orElseThrow(ProductNotFoundException::new);
-            checkingProductItemsLengths.addAll(productItemRepository
-                    .findAllByProductIdAndStatus(map.getKey(), AVAILABLE));
-            if (!checkingProductItemsLengths.isEmpty() && checkingProductItemsLengths.size() >= map.getValue()) {
-                productItemService.findAndMarkAsSold(product, map.getValue());
+            markedAsSoldItems.addAll(productItemService.findAndMarkAsSold(product, map.getValue()));
+            if (markedAsSoldItems.isEmpty()) {
+                throw new ProductException(map.getKey(), OUT_OF_STOCK);
             }
         }
-        markedAsSoldItems.addAll(productItemRepository.findAllByStatus(SOLD));
         return markedAsSoldItems.stream().map(item -> ProductItemResponse.builder()
                 .productId(item.getProduct().getId())
                 .id(item.getId())
@@ -110,17 +110,19 @@ public class ProductItemServiceImpl implements ProductItemService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = ProductException.class)
     public List<ProductItem> findAndMarkAsSold(Product product, Integer amount) throws ProductException {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
-        markedAsSoldItems.addAll(productItemRepositoryCustom
-                .findProductItemByProductAndProductStatusLimitIs(product, AVAILABLE, amount));
         try {
-            for (int i = 0; i < amount; i++) {
-                markedAsSoldItems.get(i).setStatus(SOLD);
-                markedAsSoldItems.add(markedAsSoldItems.get(i));
+            markedAsSoldItems = productItemRepository
+                    .findAllByProductIdAndStatus(product.getId(), AVAILABLE);
+            if (amount > markedAsSoldItems.size()) {
+                throw new ProductException(product.getId(), ILLEGAL_QUANTITY);
+            }
+            for (ProductItem productItem: markedAsSoldItems) {
+                productItem.setStatus(ProductStatus.SOLD);
             }
             productItemRepository.saveAll(markedAsSoldItems);
-        } catch (ProductException e) {
-            e.httpStatus();
+        } catch (ProductException prod) {
+            prod.httpStatus();
         }
-        return markedAsSoldItems;
+        return markedAsSoldItems.size() == amount ? markedAsSoldItems : new ArrayList<>();
     }
 }

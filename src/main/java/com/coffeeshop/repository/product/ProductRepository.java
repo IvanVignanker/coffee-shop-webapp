@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("select ids.id from Product ids")
     List<Long> getAllIds();
-    Optional<Product> findProductByIdAndAvailableIsTrue(Long productId);
+    Optional<Product> findByIdAndAvailable(Long productId, Boolean status);
 }

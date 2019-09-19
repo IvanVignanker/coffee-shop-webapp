@@ -26,9 +26,6 @@ public class TestController {
 
     @PostMapping("/test/findAndMark")
     public List<ProductItemResponse> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {
-        for(Map.Entry<Long, Integer> map: items.entrySet()) {
-            System.out.println(map.getKey()+": "+map.getValue());
-        }
         return productItemService.findAndMarkAsSold(items);
     }
 }
