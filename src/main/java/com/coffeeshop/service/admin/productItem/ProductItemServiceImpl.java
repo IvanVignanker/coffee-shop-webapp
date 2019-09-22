@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.OptimisticLockException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +89,7 @@ public class ProductItemServiceImpl implements ProductItemService {
 
     @Override
     @Transactional(rollbackFor = ProductException.class)
-    @Retryable(value = StaleObjectStateException.class, maxAttempts = 3,
+    @Retryable(value = OptimisticLockException.class, maxAttempts = 3,
             exclude = ProductException.class, backoff = @Backoff(delay = 1500))
     public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) throws ProductException {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
