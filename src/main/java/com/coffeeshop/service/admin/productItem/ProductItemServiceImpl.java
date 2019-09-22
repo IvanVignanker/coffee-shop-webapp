@@ -87,16 +87,19 @@ public class ProductItemServiceImpl implements ProductItemService {
     }
 
     @Override
+    @Transactional(rollbackFor = ProductException.class)
     @Retryable(value = StaleObjectStateException.class, maxAttempts = 3,
             exclude = ProductException.class, backoff = @Backoff(delay = 1500))
-    public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) {
+    public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) throws ProductException {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
         for (Map.Entry<Long, Integer> map : items.entrySet()) {
-            System.out.println("key: "+map.getKey()+", value: "+map.getValue());
-
             Product product = productRepository.findByIdAndAvailable(map.getKey(), true)
                     .orElseThrow(ProductNotFoundException::new);
-            markedAsSoldItems.addAll(productItemService.findAndMarkAsSold(product, map.getValue()));
+            try {
+                markedAsSoldItems.addAll(productItemService.findAndMarkAsSold(product, map.getValue()));
+            } catch (ProductException pro) {
+                pro.httpStatus();
+            }
             if (markedAsSoldItems.isEmpty()) {
                 throw new ProductException(map.getKey(), OUT_OF_STOCK);
             }
@@ -109,23 +112,20 @@ public class ProductItemServiceImpl implements ProductItemService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = ProductException.class)
-    public List<ProductItem> findAndMarkAsSold(Product product, Integer amount) throws ProductException {
-        List<ProductItem> markedAsSoldItems = new ArrayList<>();
-        try {
-            System.out.println("id: "+product.getId()+", amount: "+amount);
-            markedAsSoldItems = productItemRepository
-                    .findAllByProductIdAndStatus(product.getId(), AVAILABLE);
-            if (amount > markedAsSoldItems.size()) {
-                throw new ProductException(product.getId(), ILLEGAL_QUANTITY);
-            }
-            for (ProductItem productItem: markedAsSoldItems) {
-                productItem.setStatus(ProductStatus.SOLD);
-            }
-            productItemRepository.saveAll(markedAsSoldItems);
-        } catch (ProductException prod) {
-            prod.httpStatus();
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<ProductItem> findAndMarkAsSold(Product product, Integer amount) {
+        if (amount < 0) {
+            throw new ProductException(product.getId(), ILLEGAL_QUANTITY);
         }
+        List<ProductItem> markedAsSoldItems = productItemRepository
+                .findAllByProductIdAndStatus(product.getId(), AVAILABLE);
+        if (amount > markedAsSoldItems.size()) {
+            throw new ProductException(product.getId(), OUT_OF_STOCK);
+        }
+        for (ProductItem productItem: markedAsSoldItems) {
+            productItem.setStatus(ProductStatus.SOLD);
+        }
+        productItemRepository.saveAll(markedAsSoldItems);
         return markedAsSoldItems.size() == amount ? markedAsSoldItems : new ArrayList<>();
     }
 }
