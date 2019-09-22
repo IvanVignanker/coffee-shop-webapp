@@ -1,7 +1,6 @@
 package com.coffeeshop.controller;
 
 import com.coffeeshop.model.admin.response.ProductItemResponse;
-import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.service.admin.productItem.ProductItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -20,9 +19,6 @@ public class TestController {
 
     @Autowired
     private ProductItemService productItemService;
-
-    @Autowired
-    private ProductItemRepository productItemRepository;
 
     @PostMapping("/test/findAndMark")
     public List<ProductItemResponse> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {

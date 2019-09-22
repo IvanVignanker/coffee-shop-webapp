@@ -92,6 +92,8 @@ public class ProductItemServiceImpl implements ProductItemService {
     public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
         for (Map.Entry<Long, Integer> map : items.entrySet()) {
+            System.out.println("key: "+map.getKey()+", value: "+map.getValue());
+
             Product product = productRepository.findByIdAndAvailable(map.getKey(), true)
                     .orElseThrow(ProductNotFoundException::new);
             markedAsSoldItems.addAll(productItemService.findAndMarkAsSold(product, map.getValue()));
@@ -111,6 +113,7 @@ public class ProductItemServiceImpl implements ProductItemService {
     public List<ProductItem> findAndMarkAsSold(Product product, Integer amount) throws ProductException {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
         try {
+            System.out.println("id: "+product.getId()+", amount: "+amount);
             markedAsSoldItems = productItemRepository
                     .findAllByProductIdAndStatus(product.getId(), AVAILABLE);
             if (amount > markedAsSoldItems.size()) {

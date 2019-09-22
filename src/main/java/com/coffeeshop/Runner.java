@@ -48,7 +48,7 @@ public class Runner implements CommandLineRunner {
 
     public void makeAvailable(int lenght) {
         for (int i = 1; i<=lenght; i++) {
-            productCreationService.makeAvailable((long) ThreadLocalRandom.current().nextInt(1, lenght));
+            productCreationService.makeAvailable((long) i);
         }
     }
 
