@@ -1,11 +1,11 @@
-package com.coffeeshop;
+package com.coffeeshop.runner;
+
 
 import com.coffeeshop.exception.ProductNotFoundException;
 import com.coffeeshop.model.admin.request.ProductCoffeeCreation;
 import com.coffeeshop.model.admin.request.ProductCreationRequest;
 import com.coffeeshop.model.admin.request.ProductItemRequest;
 import com.coffeeshop.model.admin.request.ProductRequest;
-import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productImage.ProductImage;
 import com.coffeeshop.repository.product.ProductImageRepository;
 import com.coffeeshop.repository.product.ProductRepository;
@@ -13,13 +13,14 @@ import com.coffeeshop.service.admin.productCreation.ProductCreationService;
 import com.coffeeshop.service.admin.productItem.ProductItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Component
-public class Runner implements CommandLineRunner {
+@Profile("test")
+public class FindAndMarkTestRunner implements CommandLineRunner {
 
     @Autowired
     private ProductCreationService productCreationService;
@@ -67,7 +68,7 @@ public class Runner implements CommandLineRunner {
     public void createProductItem(int number) {
         ProductItemRequest productItemRequest = ProductItemRequest.builder()
                 .productId(Long.valueOf(number))
-                .weightKG(number == 1 || number == 2 || number == 3 ? 100 : number*10)
+                .weightKG(number == 1 || number == 4 ? 100 : number == 2 ? 99 : number == 3 ? 5 : number*10)
                 .build();
         productItemService.createProductItem(productItemRequest);
     }
@@ -86,8 +87,10 @@ public class Runner implements CommandLineRunner {
                                 .sour(ThreadLocalRandom.current().nextInt(1, 5))
                                 .bitter(ThreadLocalRandom.current().nextInt(1, 5))
                                 .strong(ThreadLocalRandom.current().nextInt(1, 5))
-                                .ground(ThreadLocalRandom.current().nextBoolean())
-                                .decaf(ThreadLocalRandom.current().nextBoolean())
+//                                .ground(ThreadLocalRandom.current().nextBoolean())
+//                                .decaf(ThreadLocalRandom.current().nextBoolean())
+                                .ground(true)
+                                .decaf(true)
                                 .build()).build();
         productCreationService.createProduct(productRequest);
     }

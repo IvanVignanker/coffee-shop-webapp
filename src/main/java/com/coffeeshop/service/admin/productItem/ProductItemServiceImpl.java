@@ -7,9 +7,11 @@ import com.coffeeshop.model.admin.response.ProductItemResponse;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;
 import com.coffeeshop.model.customer.entity.product.productQuantity.ProductQuantity;
+import com.coffeeshop.repository.custom.ProductItemWithLimitsCustomRepository;
 import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.repository.product.ProductQuantityRepository;
 import com.coffeeshop.repository.product.ProductRepository;
+import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
@@ -17,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.OptimisticLockException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,6 @@ import static com.coffeeshop.model.customer.entity.product.productItem.status.Pr
 import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.SOLD;
 
 @Service
-@Transactional
 public class ProductItemServiceImpl implements ProductItemService {
 
     @Autowired
@@ -44,6 +44,9 @@ public class ProductItemServiceImpl implements ProductItemService {
 
     @Autowired
     private ProductQuantityRepository productQuantityRepository;
+
+    @Autowired
+    private ProductItemWithLimitsCustomRepository productItemWithLimitsCustomRepository;
 
     @Override
     public void createProductItems(List<ProductItemRequest> productMainRequests) {
@@ -88,9 +91,9 @@ public class ProductItemServiceImpl implements ProductItemService {
 
     @Override
     @Transactional(rollbackFor = ProductException.class)
-    @Retryable(value = OptimisticLockException.class, maxAttempts = 3,
+    @Retryable(value = StaleObjectStateException.class, maxAttempts = 3,
             exclude = ProductException.class, backoff = @Backoff(delay = 1500))
-    public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) throws ProductException {
+    public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
         for (Map.Entry<Long, Integer> map : items.entrySet()) {
             try {
@@ -117,9 +120,9 @@ public class ProductItemServiceImpl implements ProductItemService {
         if (amount < 0) {
             throw new ProductException(product.getId(), ILLEGAL_QUANTITY);
         }
-        List<ProductItem> markedAsSoldItems = productItemRepository
-                .findAllByProductIdAndStatus(product.getId(), AVAILABLE);
-        if (amount > markedAsSoldItems.size()) {
+        List<ProductItem> markedAsSoldItems = productItemWithLimitsCustomRepository
+                .findAllByProductIdAndStatusOrderByLimit(product, AVAILABLE, amount);
+        if (markedAsSoldItems.size() < amount) {
             throw new ProductException(product.getId(), OUT_OF_STOCK);
         }
         for (ProductItem productItem: markedAsSoldItems) {

@@ -1,21 +1,19 @@
 package com.coffeeshop.controller;
 
 import com.coffeeshop.model.admin.response.ProductItemResponse;
-import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;
 import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.service.admin.productItem.ProductItemService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/admin/product")
-@Profile("development")
 public class TestController {
 
     @Autowired
@@ -24,26 +22,29 @@ public class TestController {
     @Autowired
     private ProductItemRepository productItemRepository;
 
-    @PostMapping("/test/findAndMark")
-    public List<ProductItemResponse> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {
-        return productItemService.findAndMarkAsSold(items);
-    }
-
     @GetMapping("/findAndMark/{productId}/{amount}")
     public List<ProductItemResponse> findAndMarkAsSold(@PathVariable("productId") Long productId,
                                                        @PathVariable("amount") Integer amount) {
-       Map<Long, Integer> map = new HashMap<>();
-       map.put(productId, amount);
-       return productItemService.findAndMarkAsSold(map);
+        Map<Long, Integer> map = new HashMap<>();
+        map.put(productId, amount);
+        return productItemService.findAndMarkAsSold(map);
     }
 
-    @GetMapping("/getAllItems")
-    public List<ProductItemResponse> getAllItems() {
-        List<ProductItem> products = productItemRepository.findAll();
-        return products.stream().map(x -> ProductItemResponse.builder()
-                .productId(x.getProduct().getId())
-                .id(x.getId())
-                .status(x.getStatus())
-                .build()).collect(Collectors.toList());
+    @GetMapping("/findAndMark/{productId}/{amount}/{productId2}/{amount2}")
+    public List<ProductItemResponse> findAndMarkAsSold(@PathVariable("productId") Long productId,
+                                                       @PathVariable("amount") Integer amount,
+                                                       @PathVariable("productId2") Long productId2,
+                                                       @PathVariable("amount2") Integer amount2) {
+        Map<Long, Integer> map = new HashMap<>();
+        map.put(productId, amount);
+        map.put(productId2, amount2);
+        return productItemService.findAndMarkAsSold(map);
+    }
+
+    @PostMapping("/findAndMark")
+    public List<ProductItemResponse> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(gson.toJson(items));
+        return productItemService.findAndMarkAsSold(items);
     }
 }

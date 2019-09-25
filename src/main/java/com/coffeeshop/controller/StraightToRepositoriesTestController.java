@@ -1,5 +1,6 @@
 package com.coffeeshop.controller;
 
+import com.coffeeshop.model.admin.response.ProductItemResponse;
 import com.coffeeshop.model.customer.entity.order.order.OrderEntity;
 import com.coffeeshop.model.customer.entity.order.orderDetails.OrderDetails;
 import com.coffeeshop.model.customer.entity.order.orderItem.OrderItem;
@@ -15,12 +16,15 @@ import com.coffeeshop.repository.order.OrderPriceRepository;
 import com.coffeeshop.repository.order.OrderRepository;
 import com.coffeeshop.repository.product.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@Profile("dev")
 public class StraightToRepositoriesTestController {
 
     @Autowired
@@ -192,5 +196,17 @@ public class StraightToRepositoriesTestController {
     @PostMapping("/orderDetails/example")
     public OrderDetails saveOrderDetail(@RequestBody OrderDetails orderDetails) {
         return orderDetailsRepository.save(orderDetails);
+    }
+
+//    -------
+
+    @GetMapping("/getAllItems")
+    public List<ProductItemResponse> findAllItems() {
+        List<ProductItem> list = productItemRepository.findAll();
+        return list.stream().map(element -> ProductItemResponse.builder()
+                .productId(element.getProduct().getId())
+                .id(element.getId())
+                .status(element.getStatus())
+                .build()).collect(Collectors.toList());
     }
 }
