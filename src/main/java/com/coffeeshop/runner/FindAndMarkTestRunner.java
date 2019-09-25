@@ -12,7 +12,8 @@ import com.coffeeshop.repository.product.ProductRepository;
 import com.coffeeshop.service.admin.productCreation.ProductCreationService;
 import com.coffeeshop.service.admin.productItem.ProductItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 @Profile("test")
-public class FindAndMarkTestRunner implements CommandLineRunner {
+public class FindAndMarkTestRunner implements ApplicationRunner {
 
     @Autowired
     private ProductCreationService productCreationService;
@@ -35,7 +36,7 @@ public class FindAndMarkTestRunner implements CommandLineRunner {
     private ProductRepository productRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(ApplicationArguments args) throws Exception {
         int lenght = 10;
         for (int i = 1; i <= lenght; i++) {
             createProduct(i);

@@ -1,11 +1,13 @@
 package com.coffeeshop.service.admin.productItem;
 
 import com.coffeeshop.SpringTestConfiguration;
+import com.coffeeshop.runner.FindAndMarkTestRunner;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -21,6 +23,7 @@ import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
 @Import(SpringTestConfiguration.class)
+@SpringBootTest(classes = FindAndMarkTestRunner.class)
 @TestPropertySource(properties = "test.properties")
 public class ProductItemServiceImplTest {
 
@@ -40,28 +43,31 @@ public class ProductItemServiceImplTest {
 
     @Test
     public void findAndMarkAsSoldUseCase1() {
-        Map<HttpStatus, Integer> counterByStatusTemp = iterateMethod(50, 1L);
-        Assert.assertEquals(2, counterByStatusTemp.get(HttpStatus.OK).intValue());
-        Assert.assertEquals(8, counterByStatusTemp.get(HttpStatus.PRECONDITION_FAILED).intValue());
+        String url = "http://localhost:8080/findAndMark/1/50";
+        sendRequestToServer(url);
+        Assert.assertEquals(2, counterByStatus.get(HttpStatus.OK).intValue());
+        Assert.assertEquals(8, counterByStatus.get(HttpStatus.PRECONDITION_FAILED).intValue());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void findAndMarkAsSoldUseCase2() {
-        Map<HttpStatus, Integer> counterByStatusTemp = iterateMethod(20, 2L);
-        Assert.assertEquals(4, counterByStatusTemp.get(HttpStatus.OK).intValue());
-        Assert.assertEquals(6, counterByStatusTemp.get(HttpStatus.PRECONDITION_FAILED).intValue());
+        String url = "http://localhost:8080/findAndMark/2/20";
+        sendRequestToServer(url);
+        Assert.assertEquals(4, counterByStatus.get(HttpStatus.OK).intValue());
+        Assert.assertEquals(6, counterByStatus.get(HttpStatus.PRECONDITION_FAILED).intValue());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void findAndMarkAsSoldUseCase3() {
-        Map<HttpStatus, Integer> counterByStatusTemp = iterateMethod2(2, 3L, 20,  4L);
-        Assert.assertEquals(2, counterByStatusTemp.get(HttpStatus.OK).intValue());
-        Assert.assertEquals(8, counterByStatusTemp.get(HttpStatus.PRECONDITION_FAILED).intValue());
+        String url = "http://localhost:8080/findAndMark/3/2/4/20";
+        sendRequestToServer(url);
+        Assert.assertEquals(2, counterByStatus.get(HttpStatus.OK).intValue());
+        Assert.assertEquals(8, counterByStatus.get(HttpStatus.PRECONDITION_FAILED).intValue());
     }
 
-    public Map<HttpStatus, Integer> iterateMethod2(Integer amount, Long productId, Integer amount2, Long productId2) {
-        String url = "http://localhost:8080/api/admin/product/findAndMark/"+productId+"/"
-                +amount+"/"+productId2+"/"+amount2;
+    @SuppressWarnings("ConstantConditions")
+    public void sendRequestToServer(String url) {
+        System.out.println(url);
         Stream.iterate(1, n -> n + 1).limit(10).parallel().forEach(x -> {
             try {
                 ResponseEntity<Object> exchange =
@@ -71,20 +77,5 @@ public class ProductItemServiceImplTest {
                 counterByStatus.compute(HttpStatus.valueOf(e.getRawStatusCode()), (status, i) -> i + 1);
             }
         });
-        return counterByStatus;
-    }
-
-    public Map<HttpStatus, Integer> iterateMethod(Integer amount, Long productId) {
-        String url = "http://localhost:8080/api/admin/product/findAndMark/"+productId+"/"+amount;
-        Stream.iterate(1, n -> n + 1).limit(10).parallel().forEach(x -> {
-            try {
-                ResponseEntity<Object> exchange =
-                        testConfiguration.restTemplate().exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Object.class);
-                counterByStatus.compute(exchange.getStatusCode(), (status, i) -> i + 1);
-            } catch (RestClientResponseException e) {
-                counterByStatus.compute(HttpStatus.valueOf(e.getRawStatusCode()), (status, i) -> i + 1);
-            }
-        });
-        return counterByStatus;
     }
 }
