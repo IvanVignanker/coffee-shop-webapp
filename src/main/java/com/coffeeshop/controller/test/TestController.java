@@ -1,7 +1,6 @@
 package com.coffeeshop.controller.test;
 
 import com.coffeeshop.model.admin.response.ProductItemResponse;
-import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.service.admin.productItem.ProductItemService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,9 +17,6 @@ public class TestController {
 
     @Autowired
     private ProductItemService productItemService;
-
-    @Autowired
-    private ProductItemRepository productItemRepository;
 
     @GetMapping("/findAndMark/{productId}/{amount}")
     public List<ProductItemResponse> findAndMarkAsSold(@PathVariable("productId") Long productId,
@@ -43,8 +39,6 @@ public class TestController {
 
     @PostMapping("/findAndMark")
     public List<ProductItemResponse> findAndMarkAsSold(@RequestBody Map<Long, Integer> items) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        System.out.println(gson.toJson(items));
         return productItemService.findAndMarkAsSold(items);
     }
 }

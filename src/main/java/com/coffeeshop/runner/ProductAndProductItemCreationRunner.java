@@ -69,7 +69,8 @@ public class ProductAndProductItemCreationRunner implements CommandLineRunner {
     public void createProductItem(int number) {
         ProductItemRequest productItemRequest = ProductItemRequest.builder()
                 .productId(Long.valueOf(number))
-                .weightKG(number < 10 ? 100 : number*10)
+                .weightKG(number == 1 || number == 4 ? 100 : number == 2 ? 99 : number == 3 ? 5 : number*10)
+//                .weightKG(number < 10 ? 100 : number*10)
                 .build();
         productItemService.createProductItem(productItemRequest);
     }
