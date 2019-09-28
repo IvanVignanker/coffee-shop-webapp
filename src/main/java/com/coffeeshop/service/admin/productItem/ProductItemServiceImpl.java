@@ -25,8 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.coffeeshop.exception.ProductExceptionType.ILLEGAL_QUANTITY;
-import static com.coffeeshop.exception.ProductExceptionType.OUT_OF_STOCK;
+import static com.coffeeshop.exception.ProductExceptionType.*;
 import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.AVAILABLE;
 import static com.coffeeshop.model.customer.entity.product.productItem.status.ProductStatus.SOLD;
 
@@ -96,15 +95,11 @@ public class ProductItemServiceImpl implements ProductItemService {
     public List<ProductItemResponse> findAndMarkAsSold(Map<Long, Integer> items) {
         List<ProductItem> markedAsSoldItems = new ArrayList<>();
         for (Map.Entry<Long, Integer> map : items.entrySet()) {
-            try {
-                Product product = productRepository.findByIdAndAvailable(map.getKey(), true)
-                        .orElseThrow(ProductNotFoundException::new);
-                markedAsSoldItems.addAll(productItemService.findAndMarkAsSold(product, map.getValue()));
-                if (markedAsSoldItems.isEmpty()) {
-                    throw new ProductException(map.getKey(), OUT_OF_STOCK);
-                }
-            } catch (ProductException pro) {
-                pro.httpStatus();
+            Product product = productRepository.findByIdAndAvailable(map.getKey(), true)
+                    .orElseThrow(() -> new ProductException(map.getKey(), PRODUCT_NOT_AVAILABLE));
+            markedAsSoldItems.addAll(productItemService.findAndMarkAsSold(product, map.getValue()));
+            if (markedAsSoldItems.isEmpty()) {
+                throw new ProductException(map.getKey(), OUT_OF_STOCK);
             }
         }
         return markedAsSoldItems.stream().map(item -> ProductItemResponse.builder()
@@ -121,7 +116,7 @@ public class ProductItemServiceImpl implements ProductItemService {
             throw new ProductException(product.getId(), ILLEGAL_QUANTITY);
         }
         List<ProductItem> markedAsSoldItems = productItemWithLimitsCustomRepository
-                .findAllByProductIdAndStatusOrderByLimit(product, AVAILABLE, amount);
+                    .findAllByProductIdAndStatusOrderByLimit(product, AVAILABLE, amount);
         if (markedAsSoldItems.size() < amount) {
             throw new ProductException(product.getId(), OUT_OF_STOCK);
         }

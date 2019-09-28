@@ -19,18 +19,18 @@ public class ProductCoffee extends BaseDate {
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID", nullable = false)
     private Product product;
 
-    @Column(name = "SOUR")
+    @Column(name = "SOUR", nullable = false)
     private Integer sour;
 
-    @Column(name = "BITTER")
+    @Column(name = "BITTER", nullable = false)
     private Integer bitter;
 
-    @Column(name = "STRONG")
+    @Column(name = "STRONG", nullable = false)
     private Integer strong;
 
-    @Column(name = "GROUND")
+    @Column(name = "GROUND", nullable = false)
     private Boolean ground;
 
-    @Column(name = "DECAF")
+    @Column(name = "DECAF", nullable = false)
     private Boolean decaf;
 }

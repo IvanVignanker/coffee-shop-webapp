@@ -4,8 +4,6 @@ import com.coffeeshop.model.customer.entity.base.BaseDate;
 import com.coffeeshop.model.customer.entity.product.product.converter.ProductTypeConverter;
 import com.coffeeshop.model.customer.entity.product.product.status.ProductType;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
