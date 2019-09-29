@@ -1,8 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {LabelType, Options} from "ng5-slider";
-import {LocalStorageService} from "../services/localStorage/local-storage.service";
-import {ProductListRequest} from "../model/productListRequest";
-import {Characteristics} from "../model/characteristics";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Options } from "ng5-slider";
+import { LocalStorageService } from "../services/localStorage/local-storage.service";
 
 export interface Request {
   page?: number;

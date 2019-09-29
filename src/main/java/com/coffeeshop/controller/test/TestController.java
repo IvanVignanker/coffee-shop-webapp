@@ -2,8 +2,6 @@ package com.coffeeshop.controller.test;
 
 import com.coffeeshop.model.admin.response.ProductItemResponse;
 import com.coffeeshop.service.admin.productItem.ProductItemService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

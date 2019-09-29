@@ -7,7 +7,7 @@ import com.coffeeshop.model.admin.response.ProductItemResponse;
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;
 import com.coffeeshop.model.customer.entity.product.productQuantity.ProductQuantity;
-import com.coffeeshop.repository.custom.ProductItemWithLimitsCustomRepository;
+import com.coffeeshop.repository.custom.admin.ProductItemWithLimitsCustomRepository;
 import com.coffeeshop.repository.product.ProductItemRepository;
 import com.coffeeshop.repository.product.ProductQuantityRepository;
 import com.coffeeshop.repository.product.ProductRepository;

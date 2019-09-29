@@ -1,4 +1,4 @@
-package com.coffeeshop.repository.custom;
+package com.coffeeshop.repository.custom.customer;
 
 import com.coffeeshop.model.customer.web.productList.*;
 import org.springframework.stereotype.Repository;

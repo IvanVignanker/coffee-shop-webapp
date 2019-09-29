@@ -1,4 +1,4 @@
-package com.coffeeshop.repository.custom;
+package com.coffeeshop.repository.custom.admin;
 
 import com.coffeeshop.model.customer.entity.product.product.Product;
 import com.coffeeshop.model.customer.entity.product.productItem.ProductItem;

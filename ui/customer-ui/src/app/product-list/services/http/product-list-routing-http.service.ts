@@ -12,6 +12,6 @@ export class ProductListRoutingHttpService {
   constructor(private httpClient: HttpClient) { }
 
   getProducts(productListRequest: ProductListRequest) :Observable<ProductListResponse> {
-    return this.httpClient.post<ProductListResponse>("/api/products",productListRequest);
+    return this.httpClient.post<ProductListResponse>("/api/products", productListRequest);
   }
 }

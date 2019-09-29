@@ -7,8 +7,8 @@ exports.getProductDetails = function (request, response) {
   rest.get(configuration.perEnvironment.backendUrl + '/customer/products/' + id)
     .on('success', (backendResponseBody, backendResponseMeta) => {
     response.json(backendResponseBody);
-})
-.on('fail', (backendResponseBody, backendResponseMeta) => {
-    response.status(backendResponseMeta.statusCode).send(backendResponseBody);
-});
+  })
+  .on('fail', (backendResponseBody, backendResponseMeta) => {
+      response.status(backendResponseMeta.statusCode).send(backendResponseBody);
+  });
 };

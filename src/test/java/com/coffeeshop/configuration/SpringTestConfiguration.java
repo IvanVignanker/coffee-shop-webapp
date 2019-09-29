@@ -1,4 +1,4 @@
-package com.coffeeshop;
+package com.coffeeshop.configuration;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.web.client.RestTemplateBuilder;
