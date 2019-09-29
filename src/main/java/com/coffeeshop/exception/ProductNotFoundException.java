@@ -3,7 +3,6 @@ package com.coffeeshop.exception;
 import com.coffeeshop.model.customer.web.error.ErrorResponse;
 import org.springframework.http.HttpStatus;
 
-
 public class ProductNotFoundException extends BaseException {
 
     private static final String DEFAULT_MESSAGE = "Product doesn't exist by this id.";

@@ -15,7 +15,7 @@
       <td>{{this.productDetails?.productName}}</td>
       <td>{{this.productDetails?.description}}</td>
       <td>{{this.productDetails?.shortDescription}}</td>
-      <td>{{this.productDetails?.images}}</td>
+      <a *ngFor="let image of productDetails?.images" href="{{image}}">{{image}}<br></a>
     </tr>
     </tbody>
   </table>

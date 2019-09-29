@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="products?.popular">
   <div class="popular-big-card card">
     <div class="container">
       <div class="popular-content-group row">
@@ -35,9 +35,9 @@
                 <p>Strong</p>
               </div>
               <div class="col-6">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
               </div>
             </div>
             <div class="bitter-beans row">
@@ -45,9 +45,9 @@
                 <p>Bitter</p>
               </div>
               <div class="col-6">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
               </div>
             </div>
             <div class="sour-beans row">
@@ -55,9 +55,9 @@
                 <p>Sour </p>
               </div>
               <div class="col-6">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
-                <img src="../../../../assets/imagesProductList/coffee-bean-for-a-coffee-break.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-dark.svg">
+                <img src="../../../../assets/imagesProductList/beans/coffee-bean-light.svg">
               </div>
             </div>
           </div>
@@ -73,13 +73,13 @@
       </div>
     </div>
   </div>
-  <div class="popular-small-card card">
+  <div class="popular-small-card card" *ngIf="products?.products[1]">
     <img src="../../../../assets/imagesProductList/Image_Brazilian%20Santos_Product%20Listing.png"
          class="card-img-top">
     <div class="container">
-      <a class="card-title" routerLink="/productDetails/{{this.products?.products[0].productId}}">
-        {{this.products?.products[0].title}}</a>
-      <h3 class="card-title">USD {{this.products?.products[0].price}}</h3>
+      <a class="card-title" routerLink="/productDetails/{{this.products?.products[1].productId}}">
+        {{this.products?.products[1].title}}</a>
+      <h3 class="card-title">USD {{this.products?.products[1].price}}</h3>
       <button class="btn btn-dark" (click)="addToCard()">ADD TO CART</button>
     </div>
   </div>

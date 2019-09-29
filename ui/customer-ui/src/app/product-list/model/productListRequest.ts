@@ -78,11 +78,4 @@ export class ProductListRequest {
   set characteristics(value: Characteristics) {
     this._characteristics = value;
   }
-
-  getDefaultRequest() :ProductListRequest {
-    return new ProductListRequest(1, 10, 'go home',
-      100, 200, 'popular',
-      new Characteristics(1, 2, 1, 2, 1, 2,
-        true, true, 'arabica'));
-  }
 }

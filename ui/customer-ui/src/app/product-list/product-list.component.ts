@@ -14,19 +14,23 @@ import {LocalStorageService} from "./services/localStorage/local-storage.service
 export class ProductListComponent implements OnInit {
 
   public products: ProductListResponse;
-  private defaultRequest: ProductListRequest = ProductListRequest.prototype.getDefaultRequest();
 
   constructor(private listRoutingHttpService: ProductListRoutingHttpService,
   private localStorageService: LocalStorageService) {}
 
   ngOnInit() {
-    this.getProductList(this.defaultRequest);
+    this.getProductList(JSON.parse(this.localStorageService.getSearchParams()));
   }
 
   getProductList(productListRequest: ProductListRequest) {
     return this.listRoutingHttpService.getProducts(productListRequest).subscribe(data => {
       this.products = data;
     });
+  }
+
+  resetSearchForm() {
+    console.log(this.localStorageService.getSearchParams());
+    this.getProductList(JSON.parse(this.localStorageService.getSearchParams()));
   }
 
   submitSearchForm() {

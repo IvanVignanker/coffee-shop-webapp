@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/product")
-@Profile("development")
+@Profile("dev")
 public class ProductCreationManagementController {
 
     @Autowired
@@ -41,11 +41,6 @@ public class ProductCreationManagementController {
         productItemService.createProductItems(productMainRequests);
 
         return productItemRepository.findAll();
-    }
-
-    @PutMapping("/findAndMark/{amount}")
-    public List<ProductItem> findAndMarkAsSold(@PathVariable("amount") Integer amount) {
-        return productItemService.findAndMarkAsSold(amount);
     }
 
     @PostMapping("/addProduct")

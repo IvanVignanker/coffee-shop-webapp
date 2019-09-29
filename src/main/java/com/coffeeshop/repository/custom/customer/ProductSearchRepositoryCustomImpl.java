@@ -1,4 +1,4 @@
-package com.coffeeshop.repository;
+package com.coffeeshop.repository.custom.customer;
 
 import com.coffeeshop.model.customer.web.productList.*;
 import org.springframework.stereotype.Repository;
@@ -23,6 +23,9 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
             jpaQuery.setParameter(map.getKey(), map.getValue());
         }
         List<Object[]> responsesFromDB = jpaQuery.getResultList();
+        if (responsesFromDB.isEmpty()) {
+            return new ProductListDTOResponse();
+        }
         List<ProductDTOResponse> productDTOResponses = new ArrayList<>();
 
         for (Object[] list : responsesFromDB) {
@@ -32,7 +35,7 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
                     .shortDescription((String) list[2])
                     .type(String.valueOf(list[3]))
                     .previewImage((String) list[4])
-                    .price((Double) list[5])
+                    .price(Double.valueOf(Math.round((Double) list[5])))
                     .productParameters(ProductsParametersDTOResponse.builder()
                             .bitter((Integer) list[6])
                             .sour((Integer) list[7])
