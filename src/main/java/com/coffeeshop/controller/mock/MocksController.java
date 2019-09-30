@@ -1,4 +1,4 @@
-package com.coffeeshop.controller.test;
+package com.coffeeshop.controller.mock;
 
 import com.coffeeshop.model.customer.web.checkout.CheckoutSubmitDTORequest;
 import com.coffeeshop.model.customer.web.checkout.CheckoutSubmitDTOResponse;
