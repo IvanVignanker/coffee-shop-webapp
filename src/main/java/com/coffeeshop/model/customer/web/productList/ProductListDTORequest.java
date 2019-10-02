@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,8 +13,10 @@ import javax.validation.Valid;
 public class ProductListDTORequest {
 
     @ApiModelProperty(example = "1")
-    private Long page;
+    @Min(1)
+    private Integer page;
     @ApiModelProperty(example = "10")
+    @Min(1)
     private Integer results;
     @ApiModelProperty(example = "Jamaican Arabica")
     private String search;
