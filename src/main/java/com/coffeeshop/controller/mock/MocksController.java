@@ -1,5 +1,6 @@
 package com.coffeeshop.controller.mock;
 
+import com.coffeeshop.model.customer.web.ProductImageDto;
 import com.coffeeshop.model.customer.web.checkout.CheckoutSubmitDTORequest;
 import com.coffeeshop.model.customer.web.checkout.CheckoutSubmitDTOResponse;
 import com.coffeeshop.model.customer.web.productList.*;
@@ -30,5 +31,9 @@ public class MocksController {
     @PostMapping("/customer/checkout")
     public CheckoutSubmitDTOResponse submitCheckout(@RequestBody @Valid CheckoutSubmitDTORequest request) {
         return CheckoutSubmitDTOResponse.builder().orderId(1L).build();
+    }
+
+    @PostMapping(value = "/customer/products/save/images")
+    public void saveProductImages(@RequestBody ProductImageDto productImageDto){
     }
 }
