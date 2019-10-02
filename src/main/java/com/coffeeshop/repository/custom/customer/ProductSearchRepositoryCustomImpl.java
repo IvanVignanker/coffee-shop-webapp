@@ -16,16 +16,39 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
 
     @Override
     public ProductListDTOResponse searchProductByName(ProductListDTORequest productListDTORequest) {
-        String query = createQuery();
-        TypedQuery<Object[]> jpaQuery = entityManager.createQuery(query, Object[].class);
+        if (isEmpty(productListDTORequest)) {
+            TypedQuery<Object[]> jpaQuery = entityManager.createQuery(createQuery(), Object[].class);
+            setPageAndMaxResult(productListDTORequest, jpaQuery);
+            List<Object[]> responsesFromDB = jpaQuery.getResultList();
+            return convertResult(responsesFromDB);
+        }
+        TypedQuery<Object[]> jpaQuery = entityManager.createQuery(createQuery(), Object[].class);
+        setPageAndMaxResult(productListDTORequest, jpaQuery);
+
         Map<String, Object> parameters = setParameters(productListDTORequest);
         for (Map.Entry<String, Object> map : parameters.entrySet()) {
             jpaQuery.setParameter(map.getKey(), map.getValue());
         }
+
         List<Object[]> responsesFromDB = jpaQuery.getResultList();
         if (responsesFromDB.isEmpty()) {
             return new ProductListDTOResponse();
         }
+        return convertResult(responsesFromDB);
+    }
+
+    private boolean isEmpty(ProductListDTORequest productListDTORequest) {
+        if (       productListDTORequest.getSortBy().equals(null)
+                && productListDTORequest.getSearch().equals(null)
+                && productListDTORequest.getPriceMin().equals(null)
+                && productListDTORequest.getPriceMax().equals(null)
+                && productListDTORequest.getCharacteristics().equals(null)) {
+            return true;
+        }
+        return false;
+    }
+
+    private ProductListDTOResponse convertResult(List<Object[]> responsesFromDB){
         List<ProductDTOResponse> productDTOResponses = new ArrayList<>();
 
         for (Object[] list : responsesFromDB) {
@@ -52,7 +75,14 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
                 .build();
     }
 
-    public Map<String, Object> setParameters(ProductListDTORequest productListDTORequest) {
+    private void setPageAndMaxResult(ProductListDTORequest productListDTORequest, TypedQuery<Object[]> query) {
+        int page = productListDTORequest.getPage();
+        int result = productListDTORequest.getResults();
+        query.setFirstResult(result * (page - 1));
+        query.setMaxResults(result);
+    }
+
+    private Map<String, Object> setParameters(ProductListDTORequest productListDTORequest) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("search", productListDTORequest.getSearch()+"%");
         parameters.put("priceMin",productListDTORequest.getPriceMin());
@@ -68,7 +98,7 @@ public class ProductSearchRepositoryCustomImpl implements ProductSearchRepositor
         return parameters;
     }
 
-    public String createQuery() {
+    private String createQuery() {
         StringBuilder query = new StringBuilder();
         query.append("select p.id, p.productName, p.shortDescription, p.productCategoryId, p.previewImage, p.unitPrice, ");
         query.append("pc.bitter, pc.sour, pc.strong, pc.decaf, ");

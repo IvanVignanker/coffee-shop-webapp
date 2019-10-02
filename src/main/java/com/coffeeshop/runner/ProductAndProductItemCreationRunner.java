@@ -37,7 +37,7 @@ public class ProductAndProductItemCreationRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        int lenght = 10;
+        int lenght = 50;
         for (int i = 1; i <= lenght; i++) {
             createProduct(i);
             createProductItem(i);
@@ -88,8 +88,8 @@ public class ProductAndProductItemCreationRunner implements CommandLineRunner {
                                 .sour(ThreadLocalRandom.current().nextInt(1, 5))
                                 .bitter(ThreadLocalRandom.current().nextInt(1, 5))
                                 .strong(ThreadLocalRandom.current().nextInt(1, 5))
-                                .ground(ThreadLocalRandom.current().nextBoolean())
-                                .decaf(ThreadLocalRandom.current().nextBoolean())
+                                .ground(true)
+                                .decaf(true)
                                 .build()).build();
         productCreationService.createProduct(productRequest);
     }
